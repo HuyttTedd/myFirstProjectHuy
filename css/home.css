@@ -1,0 +1,465 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+}
+
+header {
+    width: 100%;
+    
+    background: #ffb610;
+    padding: 0 1rem;
+    display: flex;
+    overflow: hidden;
+    justify-content: space-between;
+}
+
+header span {
+    font-size: 1.9rem;
+    float: left;
+    color: white;
+    line-height: 50px;
+    padding: 0 2%;
+        
+}
+
+header .header1 {
+
+    width: 100%;
+    
+}
+header .header1 form #search {
+    
+    height: 34px;
+    width: 90%;
+    margin: 0.3rem 5%;
+    outline: none;
+    border: 1px solid white;
+    outline: none;
+    padding: 0 1rem;
+    border-radius: 8px;
+    font-size: 1.1rem;
+}
+
+header .header1 .navlink {
+    position: relative;
+    overflow: hidden;
+    margin-left: 5%;
+}
+
+header .header1 .navlink a {
+    text-decoration: none;
+    color: white;
+    padding: 0 13px;
+    line-height: 55px;
+}
+
+header .header1 .navlink a:hover {
+    color: #78754f;
+}
+
+header ul {
+    width: 33%;
+    float: right;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+header ul li {
+    list-style: none;
+}
+header ul li a {
+    text-decoration: none;
+    padding: 0.3rem;
+    color: white;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 50px;
+    font-size: 13px;
+    
+}
+
+.aaa {
+    border-right: 1px solid white;
+}
+
+header ul li a:hover {
+    color: #78754f;  
+}
+
+
+.checkbtn {
+    font-size: 2.1rem;
+    display: none;
+    float: right;
+    line-height: 50px;
+    cursor: pointer;
+}
+
+#check {
+    display: none;
+}
+
+@media (max-width: 858px) {
+    .checkbtn {
+        display: block;
+        
+    }
+
+    .aaa {
+        border-right: none;
+    }
+
+    header {
+        height: 50px;
+        display: block;
+    }
+
+    
+    header .header1 {
+        width: 100%;
+        position: fixed;
+        display: block;
+        top: 50px;
+        left: -100%;
+        
+        background: grey;
+        text-align: center;
+        z-index: 100;
+    }
+
+    header .header1 .navlink  {
+        text-transform: uppercase;
+        width: 100%;
+        position: fixed;       
+        top: 100px;
+        margin-left: 0%;
+        height: 200px;
+        background: grey;
+        text-align: center;
+        z-index: 110;
+    }
+
+    header .header1 .navlink a {
+        display: block;
+        font-size: 13px;
+        border-bottom: 1px solid white;
+        line-height: 50px;
+    }
+
+    header .header1 form {
+        top: 50px;
+        border-bottom: 1px solid white ;
+        line-height: 50px;
+    }
+    header.header1 form #search {
+        
+        width: 90%; 
+        
+        
+
+    }
+
+    header ul {
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        background: grey;
+        top: 300px;
+        left: -100%;
+        text-align: center;
+        display: block;
+        
+    }
+
+    header ul li {
+        border-bottom: 1px solid white;
+        
+        
+    }
+
+    header ul li:first-child {
+        
+        border-top: 1px solid white ;
+        
+    }
+
+    
+    #check:checked ~ ul, #check:checked ~ .header1 {
+        left: 0;
+        z-index: 20;
+    }
+}
+
+.first-part {
+    
+    top: 400px;
+    width: 100%;
+    height: 24em;
+    background: rgb(237, 243, 243);
+    
+}
+
+.carousel {
+    position: relative;
+    width: 70%;
+    height: 21em;
+    background: black;
+    margin: 0 15%; 
+    overflow: hidden;
+    border-radius: 2px;
+}
+
+.first-part .carousel .imageHolder{
+    width: 100%;
+    height: 100%;  
+    position: absolute;
+    opacity: 0;
+}
+
+.first-part .carousel .imageHolder img{
+     width: 100%;
+     height: 100%;
+    
+ 
+}
+
+.first-part .carousel .leftArrow, .first-part .carousel .rightArrow {
+    background: #00000036;
+    z-index: 1;
+    cursor: pointer;
+    position: absolute;
+    font-size: 5rem;
+    border-radius: 3px;
+}
+
+.first-part .carousel .leftArrow {
+    top: 50%;    
+    transform: translateY(-50%);
+}
+
+.first-part .carousel .rightArrow {
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+}
+
+.first-part #dotsContainer {
+    width: 100%;
+    height: 10%;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+    
+}
+
+.first-part #dotsContainer .dots {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    background: black;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: black .5s;
+    margin: 0 20px;
+}
+
+.first-part #dotsContainer .dots:hover, .first-part #dotsContainer .active {
+    background: gray;
+}
+
+.first-part .moveLeftCurrentSlide {
+    animation-name: moveLeftCurrent;
+    animation-duration: .5s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+
+.first-part .moveLeftNextSlide {
+    animation-name: moveLeftNext;
+    animation-duration: .5s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+
+@keyframes moveLeftCurrent {
+    from {
+        margin-left: 0;
+        opacity: 1;
+    }
+    to {
+        margin-left: -100%;
+        opacity: 1;
+    }
+}
+
+@keyframes moveLeftNext {
+    from {
+        margin-left: 100%;
+        opacity: 1;
+    }
+    to {
+        margin-left: 0;
+        opacity: 1;
+    }
+}
+
+.first-part .moveRightCurrentSlide {
+    animation-name: moveRightCurrent;
+    animation-duration: .5s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+
+.first-part .moveRightNextSlide {
+    animation-name: moveRightNext;
+    animation-duration: .5s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+
+@keyframes moveRightCurrent {
+    from {
+        margin-left: 0;
+        opacity: 1;
+    }
+    to {
+        margin-left: 100%;
+        opacity: 1;
+    }
+}
+
+@keyframes moveRightNext {
+    from {
+        margin-left: -100%;
+        opacity: 1;
+    }
+    to {
+        margin-left: 0;
+        opacity: 1;
+    }
+}
+
+
+/*Carousel, content*/
+.content {  
+    width: 100%;    
+    margin-top: 2rem;
+}
+
+.content .arrange {
+    width: 94%;
+    height: 2.5rem;
+    background: greenyellow;
+    margin: 0 auto;
+}
+
+.content .category {
+    display: flex;
+    width: 94%;
+    margin: 0 auto;  
+    
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.content .category .item {
+    width: 12.5%;
+    position: relative;
+    border: 1px solid white;
+    
+}
+
+.content .category .item a {
+    text-decoration: none;
+}
+.content .category .item img {
+    
+    width: 100%;
+    border-radius: 5px;
+    z-index: 1;
+}
+
+.content .category .item span {
+    width: 98%;
+    position: absolute;
+    text-align: center;
+    z-index: 2;
+    left: 1%;
+    top: 30%;
+    font-size: 1rem;
+    word-break: break-word;
+    color: white;
+}
+
+
+.content .product {   
+    width: 94%;   
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 1px;
+} 
+.content .product .product-item {
+    width: 20%;
+    height: 18em;
+    border: 1px solid white;
+    margin-bottom: 1px;
+    background-color: #ffb610;
+    text-align: center;
+}    
+
+.content .product .product-item a{
+    text-decoration: none;
+    color: black;
+    font-size: 1.1em;
+    word-break: break-word;
+} 
+
+.content .product .product-item a span{
+    line-height: 2rem;
+    color: red;
+    
+} 
+
+.content .product .product-item img{
+    width: 100%;
+    height: 70%;
+}
+
+@media (max-width: 800px) {
+    .content .product .product-item {
+        width: 33.333%;
+        height: 18rem;
+        border: 1px solid white;
+        margin-bottom: 1px;
+    } 
+
+    .content .category .item {
+        width: 25%;
+    }
+}
+
+@media (max-width: 600px) {
+    .content .product .product-item {
+        width: 50%;
+        height: 13rem;
+        border: 1px solid white;
+        margin-bottom: 1px;
+    } 
+    .content .product .product-item a{
+        font-size: .8em;
+    } 
+    .content .category .item {
+        width: 25%;
+    }
+
+    .content .category .item span {
+        font-size: .7rem;     
+    }
+}
