@@ -377,9 +377,10 @@ header ul li a:hover {
 .content .category .item a {
     text-decoration: none;
 }
-.content .category .item img {
-    
+.content .category .item div {
+    background-color: red;
     width: 100%;
+    height: 3.9rem;
     border-radius: 5px;
     z-index: 1;
 }
@@ -439,6 +440,10 @@ header ul li a:hover {
         border: 1px solid white;
         margin-bottom: 1px;
     } 
+
+    .content .category .item div {
+        height: 3.1rem;
+    }
 
     .content .category .item {
         width: 25%;

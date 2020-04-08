@@ -78,7 +78,7 @@
                 while($dataCategory = mysqli_fetch_array($resCategory)) {
             ?>  
                     <div class="item">
-                <a href="home.php?val=<?php echo $dataCategory["type_id"]; ?>"><div></div>
+                <a href="display-item.php?val=<?php echo $dataCategory["type_id"]; ?>"><div></div>
                 <span><?php echo $dataCategory["type_name"];?></span></a>
                     </div>
             <?php        
@@ -99,25 +99,25 @@
         </div>
         <div class="product">
             
-<?php
+        <?php
 
-        if (isset($_REQUEST['val'])) {
-        $valId = $_REQUEST["val"];
-        include("connect.php");
-        $sql_display_product = "SELECT * FROM products where id_type_product = $valId";
-        $resProduct = mysqli_query($conn, $sql_display_product);
-        while ($dataProduct = mysqli_fetch_array($resProduct)) {
-?>
-        <div class="product-item">
-                        <a href="#">
-                        <img src="cake.jpeg">
-                        <!--Limit word < 45-->
-                        <p><?php echo $dataProduct["name_product"]; ?></p>
-                        <span><?php echo $dataProduct["price"]; ?></span>
-                </a>
-        </div>
+    if (isset($_REQUEST['val'])) {
+    $valId = $_REQUEST["val"];
+    include("connect.php");
+    $sql_display_product = "SELECT * FROM products where id_type_product = $valId";
+    $resProduct = mysqli_query($conn, $sql_display_product);
+    while ($dataProduct = mysqli_fetch_array($resProduct)) {
+        ?>
+    <div class="product-item">
+                    <a href="#">
+                    <img src="cake.jpeg">
+                    <!--Limit word < 45-->
+                    <p><?php echo $dataProduct["name_product"]; ?></p>
+                    <span><?php echo $dataProduct["price"]; ?></span>
+            </a>
+    </div>
 <?php
-}
+    }
 }
 ?>
 
@@ -130,3 +130,6 @@
 
 </body>
 </html>
+
+
+
