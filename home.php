@@ -109,24 +109,52 @@
         while ($dataProduct = mysqli_fetch_array($resProduct)) {
 ?>
         <div class="product-item">
-                        <a href="#">
+                <a href="#">
                         <img src="cake.jpeg">
                         <!--Limit word < 45-->
                         <p><?php echo $dataProduct["name_product"]; ?></p>
-                        <span><?php echo $dataProduct["price"]; ?></span>
+                        <span><?php echo $dataProduct["price"]; ?></span>                       
+                </a>
+                <a href="#">
+                        <div class="cart">
+                            <h5>Thêm vào giỏ<i class="fas fa-cart-arrow-down"></i></h5>                          
+                        </div>
+                        
                 </a>
         </div>
+        
 <?php
 }
 }
 ?>
 
+            <div class="product-item">
+                    <a href="#">
+                        <img src="cake.jpeg">
+                        <!--Limit word < 45-->
+                        <p><?php echo "as"; ?></p>
+                        <span><?php echo "as"; ?></span>
+                    </a>
+                    <a href="#">
+                        <div class="cart">
+                            <h5>Thêm vào giỏ hàng<i class="fas fa-cart-arrow-down"></i></h5>                          
+                        </div>
+                        
+                    </a>
+            </div>
+
         </div>
     </div>
 
+
+    <!--Giỏ hàng-->
+    <div id="">
+        <a href="https://www.google.com/">assssssssssssssss</a>
+    </div>
     <!--JS-->
     <script src="js/a.js"></script>
 
 
+    
 </body>
 </html>

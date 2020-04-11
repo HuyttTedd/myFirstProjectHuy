@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+* { 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+.detailed-product {
+    width: 89%;
+    margin: 2rem auto;
+    display: grid;
+    grid-template-columns: 10% 45% 45%;
+    grid-template-areas: 
+    "small-img img desc";
+}
+
+
+.detailed-product .small-img {
+    word-break: break-all;
+    grid-area: small-img;
+    height: 21rem;
+    overflow-y: scroll;
+}
+
+.detailed-product .small-img img {
+    width: 100%;
+}
+.detailed-product .img-product{
+    word-break: break-all;
+    grid-area: img;
+    border: 1px solid white;
+}
+
+.detailed-product .img-product img {
+    width: 100%;
+    border: 2px solid green;
+    word-break: break-all;
+}
+
+.detailed-product .description-product {
+    grid-area: desc;
+    word-break: break-all;
+    padding: 1rem;
+}
+
+.detailed-product .description-product img {
+    width: 100%;
+    border: 2px solid green;
+}
+@media (max-width: 800px) {
+    .detailed-product {
+        width: 89%;       
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 16% 1fr;
+        grid-template-rows: 1fr auto;
+        grid-template-areas: 
+        "small-img img" 
+        "desc desc";
+    }
+
+    .detailed-product .small-img {
+        height: 25rem;
+        grid-area: small-img;
+    }
+    
+    .detailed-product .img-product{
+        grid-area: img;
+    }
+    
+    .detailed-product .description-product {
+        
+        grid-area: desc;
+    }
+}
+
+@media (max-width: 600px) {
+    .detailed-product {
+        width: 96%;      
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: 1fr 6rem .5fr;
+        grid-template-areas: 
+        "img" 
+        "small-img"
+        "desc";
+    }
+
+    .detailed-product .small-img {
+        display: flex;
+        
+        height: 6rem;
+        grid-area: small-img;
+        overflow-x: scroll;
+    }
+    .detailed-product .small-img img {
+        width: 26%;
+        border-right: 1px solid snow;
+    }
+    
+    .detailed-product .img-product{
+            
+        grid-area: img;
+    }
+    
+    .detailed-product .description-product {
+        
+        grid-area: desc;
+    }
+}
+
+#buy {
+    width: 100%;
+    height: 13rem;
+    
+    word-break: break-word;
+    padding: 0.1rem;
+}
+
+#buy .price {
+    font-weight: bold;
+    font-size: 1.7rem;
+    color: brown;
+}
+
+#buy .title-product {
+    color: black;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+#buy .quantity input {
+    width: 8rem;
+    height: 1.5rem;
+    border-radius: 4px;
+    border: none;
+    
+}
+
+
+#buy .box {
+    margin-top: .6rem;
+    text-align: center;
+}
+#buy .box button {
+    background-color: orange;
+    border: none;
+    padding: .7rem 2rem;
+    font-size: 1.3rem;
+    font-weight: bold;
+
+}
+
+/*About product*/
+.about-product {
+    width: 95%;
+    margin: 2rem auto;
+    border-top: 1px solid gray;
+}
+
+.about-product .img-container {
+    width: 40%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.about-product .img-container img {
+    width: 100%;
+    border: 2px solid white;
+    margin-top: 2rem;
+}
+
+
+/*Sản phẩm tương tự*/
+.similar-product {
+    margin: 2rem auto;
+    width: 90%;
+    
+    border: 1px solid green;
+}
+
+.similar-product p {
+    color: red;
+    text-align: center;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.similar-product .box-similar-product {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    
+}
+
+.similar-product .box-similar-product img {
+    padding: 1%;
+    width: 25%;
+}
+
+

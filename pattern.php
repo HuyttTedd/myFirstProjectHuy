@@ -48,3 +48,23 @@ if (isset($_REQUEST['val'])) {
     }
 }
 ?>
+
+.buy-now {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: white;
+    font-weight: bold;
+    background-color: red;
+    padding: 1rem 3rem;
+    font-size: 1rem;
+    border-radius: 4px;
+
+}
+
+
+.title-product {
+    color: red;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
