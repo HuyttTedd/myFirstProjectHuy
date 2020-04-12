@@ -87,7 +87,7 @@ session_start();
             //flag
             $validName = $validPhone = $validPass = $validPass2 = true;
             // test
-            $sqlTest = "SELECT * FROM tblshop WHERE phone = '$phone'";
+            $sqlTest = "SELECT * FROM tbl_account WHERE phone_number = '$phone'";
             $res = mysqli_query($conn, $sqlTest);
             //check
             if(checkName($name)) {
@@ -132,7 +132,7 @@ session_start();
 
             if($validName == true && $validPhone == true && $validPass == true && $validPass2 == true) {
                 //Insert
-                $sqlIns = "INSERT INTO tblshop (name, phone, pass) VALUES ('$name', '$phone', '$pass')";
+                $sqlIns = "INSERT INTO tbl_account (level, name, phone_number, pass) VALUES (0, '$name', '$phone', '$pass')";
                 $ress = mysqli_query($conn, $sqlIns);
                 if ($ress === true) {
                     

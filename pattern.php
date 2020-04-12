@@ -68,3 +68,51 @@ if (isset($_REQUEST['val'])) {
     font-weight: bold;
     font-size: 1.5rem;
 }
+
+<?php
+                if(isset($_SESSION["id_product"])) {
+                    echo count($_SESSION["id_product"]);
+                } else {
+                    echo 0;
+                }
+                
+            ?>
+
+<?php
+    $id = $_REQUEST["id"];
+    if(isset($_SESSION["id_product"])) {
+        $arr_id = array_column($_SESSION["id_product"], 'id_product');
+        //$_SESSION["id_product"][$count] = $id;
+        if(in_array($id, $arr_id)) {
+
+        } else {
+            $count = count($_SESSION["id_product"]);
+            $item_array = [
+                'id_product' => $id
+            ];
+            $_SESSION["id_product"][$count] = $item_array;
+        }
+
+    } else {    
+        $item_array = [
+            'id_product' => $id
+        ];
+        $_SESSION["id_product"][0] = $item_array;
+    }
+
+    echo count($_SESSION["id_product"]);
+
+
+?>
+
+
+<div class="container">
+        <div class="bill">
+            <div class="image"><img src="cake.jpeg" alt=""></div>
+            <div class="content">
+                <p>Titleasddddddddasdasdsdsdsdsdsdsádddddddddsadasd</p>
+                <span>Số lượng: </span><input type="number">
+                <p class="price-product">Giá: <input type="text" onkeyup="sum()" class="price" value="asadsdsa"></p>
+            </div>
+        </div>
+    </div>

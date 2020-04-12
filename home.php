@@ -1,3 +1,7 @@
+<?php
+    session_start(); 
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -115,19 +119,18 @@
                         <p><?php echo $dataProduct["name_product"]; ?></p>
                         <span><?php echo $dataProduct["price"]; ?></span>                       
                 </a>
-                <a href="#">
+                <button onclick="addToCart(<?php echo $dataProduct['id_product']; ?>)">
                         <div class="cart">
                             <h5>Thêm vào giỏ<i class="fas fa-cart-arrow-down"></i></h5>                          
                         </div>
-                        
-                </a>
+                </button>
         </div>
-        
 <?php
 }
 }
 ?>
 
+<!--TEST PRODUCT-->
             <div class="product-item">
                     <a href="#">
                         <img src="cake.jpeg">
@@ -135,12 +138,11 @@
                         <p><?php echo "as"; ?></p>
                         <span><?php echo "as"; ?></span>
                     </a>
-                    <a href="#">
-                        <div class="cart">
-                            <h5>Thêm vào giỏ hàng<i class="fas fa-cart-arrow-down"></i></h5>                          
-                        </div>
-                        
-                    </a>
+                    <div>
+                    <button>                                       
+                            <h5 id="carttt">Thêm vào giỏ hàng<i class="fas fa-cart-arrow-down"></i></h5>                                              
+                    </button>
+                    </div>
             </div>
 
         </div>
@@ -148,13 +150,41 @@
 
 
     <!--Giỏ hàng-->
-    <div id="">
-        <a href="https://www.google.com/">assssssssssssssss</a>
+    <div id="my-cart">
+        <a href="pay.php">
+            <i class="fas fa-shopping-cart"></i>
+        </a>
+        <p id="count-product">
+        <?php
+                if(isset($_SESSION["id_product"])) {
+                    echo count($_SESSION["id_product"]);
+                } else {
+                    echo 0;
+                }
+            ?>
+        </p>
     </div>
     <!--JS-->
     <script src="js/a.js"></script>
 
 
-    
+    <script>
+        function addToCart(str) {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if(this.readyState == 4 && this.status == 200) {
+                    document.getElementById("count-product").innerHTML = this.responseText;
+                }
+            };
+
+            xmlhttp.open("GET", "cart.php?id=" + str, true);
+            xmlhttp.send();
+        }
+    </script>
+
+    <?php
+      //session_destroy();
+      $conn->close();
+    ?>
 </body>
 </html>

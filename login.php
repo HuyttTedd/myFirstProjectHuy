@@ -50,10 +50,12 @@ session_start();
             //     die("Connection failed: " . mysqli_connect_error());
             // }
 
-            $sql = "SELECT * FROM tblshop WHERE phone = '$phone' AND pass = '$pass'";
+            $sql = "SELECT * FROM tbl_account WHERE phone_number = '$phone' AND pass = '$pass'";
             $res = mysqli_query($conn, $sql);
+            $data = mysqli_fetch_array($res);
             if(mysqli_num_rows($res) > 0) {
-                $_SESSION["phone"] = $phone;
+                $_SESSION["phone_number"] = $data["phone_number"];
+                $_SESSION["name"] = $data["name"];
                 header('location:http://localhost/baitapthunhat/c.php');
 
             } else {

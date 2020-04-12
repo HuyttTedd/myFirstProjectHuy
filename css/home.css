@@ -474,3 +474,29 @@ header ul li a:hover {
         font-size: .7rem;     
     }
 }
+
+/*MY CART*/
+#my-cart {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    font-size: 3rem;
+    background-color: #effff4;
+    padding: 1rem;
+    border-radius: 50%;
+   
+}
+
+#my-cart a i {
+    color: #68db1b;
+}
+
+#my-cart p {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 0 .5rem;
+    font-size: 1.5rem;
+    background-color: #ffb610;
+    border-radius: 50%;
+}
