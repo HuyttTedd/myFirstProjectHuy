@@ -39,6 +39,17 @@
 
 .container .bill .content input {
     width: 3rem;
+    text-align: center;
+    margin: 0 .6rem;
+}
+
+.container .bill .content i {
+    background-color: green;
+    color: azure;
+    padding: .4rem;
+    font-size: .7rem;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 .container .bill .content .price-product {
