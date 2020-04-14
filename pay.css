@@ -8,7 +8,7 @@
     width: 55%;
     margin: 0 auto 4rem;
     background-color: #fff6e9;
-    padding: .5rem 0;
+    
 }
 
 .container .bill {
@@ -136,4 +136,24 @@
     }
 }
 
+.empty-cart {
+    width: 50%;
+    margin: 4rem auto;
+    
+    text-align: center;
+    font-size: 2rem;
+}
+
+
+#delete-item {
+    display: none;
+}
+
+#submit-delete-item {
+    width: 7rem;
+    padding: .2rem 0;
+    border: 1px solid black;
+    background-color: bisque;
+    margin-top: .4rem;
+}
 

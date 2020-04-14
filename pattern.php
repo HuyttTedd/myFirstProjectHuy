@@ -116,3 +116,11 @@ if (isset($_REQUEST['val'])) {
             </div>
         </div>
     </div>
+
+    <div class="detailed-item"> 
+            <img src="anhnen1.jpg" alt="">
+            <div class="price-and-quantity">
+                <p></p>
+                <p>Đơn giá</p>
+            </div>        
+        </div>

@@ -6,9 +6,12 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="d.php" method="get">
-        <input type="text" value="1" name="a">
+    <form action="e.php" method="get">
+        <input type="text" name="a">
+        <input type="text" name="b">
         <input type="submit" value="submit">
     </form>
+
+    
 </body>
 </html>

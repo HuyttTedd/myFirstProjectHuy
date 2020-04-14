@@ -3,3 +3,5 @@
 3.dùng grid để display detailed product
 4.Notify when customer sent request to server
 5.In quantity input: use regex to enter only number
+6. bị bôi đen
+7. quantity reseted when reload
