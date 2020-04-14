@@ -65,7 +65,7 @@
                    <a href="#"><i onclick="plus(<?php echo $row['id_product']; ?>)" class="fas fa-plus"></i></a>
                 </span>
                 <p class="price-product">
-                    Đơn giá: <?php echo $row["price"]; ?>
+                    Đơn giá: <?php echo $row["price"]; ?> 
                 </p>
                 <form action="pay.php" method="post">
                     <input type="text" id="delete-item" name="delete-item" value="<?php echo $row['id_product']; ?>" >
@@ -96,6 +96,8 @@
             }
         }
     }
+
+    $_SESSION["total"] = $total;
     ?>
     <!--calculate-->
     <div class="money">
@@ -109,7 +111,7 @@
 
     <script src="js/pay.js"></script>
 
-    <div id="demo"></div>
+    
 
     <?php
         //session_destroy();

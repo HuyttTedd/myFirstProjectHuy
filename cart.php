@@ -8,7 +8,7 @@ session_start();
         $arr_id = array_column($_SESSION["id_product"], 'id_product');
         //$_SESSION["id_product"][$count] = $id;
         if(in_array($id, $arr_id)) {
-
+            
         } else {
             $count = count($_SESSION["id_product"]);
             // $item_array = [

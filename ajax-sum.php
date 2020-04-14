@@ -21,7 +21,7 @@ session_start();
                         $total += (int)$key2 * (int)$value2;
                     }
                 }
-
+            $_SESSION["total"] = $total;
                 echo $total;
 
 ?>
