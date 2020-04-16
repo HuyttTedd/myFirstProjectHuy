@@ -124,3 +124,21 @@ if (isset($_REQUEST['val'])) {
                 <p>Đơn giá</p>
             </div>        
         </div>
+
+
+        <div class="product-item">
+                    <a href="#">
+                        <img src="cake.jpeg">
+                        <!--Limit word < 45-->
+                        <p><?php echo "asadsdsdsdssdsdsdsdsdsdsdsdsdsdsdsdsdsds"; ?></p>
+                        <span><?php echo "as"; ?></span>
+                    </a>
+                    <div>
+                    <button>                                       
+                            <h5 id="cart">Thêm vào giỏ hàng<i class="fas fa-cart-arrow-down"></i></h5>                                              
+                    </button>
+                    </div>
+            </div>
+
+
+            #c38f54

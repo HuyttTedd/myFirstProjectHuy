@@ -10,5 +10,3 @@ session_start();
     echo "</pre>";
 
 ?>
-a
-asdddddddddd <a href="">adsds</a>

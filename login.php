@@ -56,7 +56,7 @@ session_start();
             if(mysqli_num_rows($res) > 0) {
                 $_SESSION["phone_number"] = $data["phone_number"];
                 $_SESSION["name"] = $data["name"];
-                header('location:http://localhost/baitapthunhat/c.php');
+                header('location:http://localhost/baitapthunhat/home.php');
 
             } else {
                 $passErr = "Tài khoản hoặc mật khẩu không đúng!";

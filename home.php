@@ -39,14 +39,23 @@
         
     </div>
 
-        <ul>
-            <li><a href="" class="aaa">Đăng nhập</a></li>
-            <li><a href="">Đăng ký</a></li> 
-        </ul>
+       <?php
+            if(isset($_SESSION["phone_number"])) {
+                echo '<ul>
+                <li><a href=""><li>'.$_SESSION["name"].'</li></a></li>
+                    </ul>';
+            } else {
+                echo '<ul>
+                <li><a href="" class="aaa">Đăng nhập</a></li>
+                <li><a href="">Đăng ký</a></li> 
+                    </ul>';
+            }
+       ?>
     
     </header>
 
         <!--body-->
+    <div class="container-body">
 
     <div class="first-part">
         <!--Carousel-->
@@ -99,31 +108,33 @@
     
         </div>
         <div class="arrange">
-            <p>sap xep</p>
+            <p>sap xep(chưa làm đc)</p>
         </div>
         <div class="product">
             
 <?php
 
         if (isset($_REQUEST['val'])) {
-        $valId = $_REQUEST["val"];
+        $val_id = $_REQUEST["val"];
         include("connect.php");
-        $sql_display_product = "SELECT * FROM products where id_type_product = $valId";
+        $sql_display_product = "SELECT * FROM products where id_type_product = $val_id";
         $resProduct = mysqli_query($conn, $sql_display_product);
-        while ($dataProduct = mysqli_fetch_array($resProduct)) {
+        while ($data1 = mysqli_fetch_array($resProduct)) {
 ?>
         <div class="product-item">
-                <a href="#">
-                        <img src="cake.jpeg">
+                <a href="detailed-product.php?id_product=<?php echo $data1['id_product'];?>">
+                        <img src="<?php echo $data1["product_image"]; ?>">
                         <!--Limit word < 45-->
-                        <p><?php echo $dataProduct["name_product"]; ?></p>
-                        <span><?php echo $dataProduct["price"]; ?></span>                       
+                        <p><?php echo $data1["name_product"]; ?></p>
+                        <span><?php echo number_format($data1["price"]); ?> VNĐ</span>                       
                 </a>
-                <button onclick="addToCart(<?php echo $dataProduct['id_product']; ?>)">
+                <div>
+                <button onclick="addToCart(<?php echo $data1['id_product']; ?>)">
                         <div class="cart">
                             <h5>Thêm vào giỏ<i class="fas fa-cart-arrow-down"></i></h5>                          
                         </div>
                 </button>
+                </div>
         </div>
 <?php
 }
@@ -131,23 +142,10 @@
 ?>
 
 <!--TEST PRODUCT-->
-            <div class="product-item">
-                    <a href="#">
-                        <img src="cake.jpeg">
-                        <!--Limit word < 45-->
-                        <p><?php echo "as"; ?></p>
-                        <span><?php echo "as"; ?></span>
-                    </a>
-                    <div>
-                    <button>                                       
-                            <h5 id="carttt">Thêm vào giỏ hàng<i class="fas fa-cart-arrow-down"></i></h5>                                              
-                    </button>
-                    </div>
-            </div>
 
+            </div>
         </div>
     </div>
-
 
     <!--Giỏ hàng-->
     <div id="my-cart">
@@ -164,7 +162,7 @@
             ?>
         </p>
     </div>
-    <!--JS-->
+    <!--JS_______________________---------------------------------------------------------->
     <script src="js/a.js"></script>
 
 

@@ -22,6 +22,6 @@ session_start();
                     }
                 }
             $_SESSION["total"] = $total;
-                echo $total;
+                echo number_format($total)." VNĐ" ;
 
 ?>

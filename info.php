@@ -10,21 +10,50 @@
     <link rel="stylesheet" href="info.css">
 </head>
 <body>
+    <?php
+        function checkPhone($val) {
+            $pattern = '#^(03|05|07|08|09)[0-9]{8}$#';
+            if(preg_match($pattern, $val)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        $phoneErr = $addressErr = $nameErr = "";
+        if($_SERVER["REQUEST_METHOD"] === "POST") {
+            $phone = $_POST["phone-number"];
+            if(checkPhone($phone)) {
+                header('location:http://localhost/baitapthunhat/bill.php');
+            } else {
+                $phoneErr = "Số điện thoại không hợp lệ";
+            }
+        }
+    ?>
+
     <div class="container-info">
-        <form action="bill.php" method="POST"> 
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST"> 
+        <div class="item">
+            <div>Họ và tên:</div>
+            <input type="text" name="name">
+            <span><?php echo $nameErr;?></span>
+        </div>
+
         <div class="item">
             <div>Số điện thoại:</div>
             <input type="text" name="phone-number">
+            <span><?php echo $phoneErr;?></span>
         </div>
 
         <div class="item">
             <div>Địa chỉ giao hàng:</div>
             <input type="text" name="address">  
+            <span><?php echo $addressErr;?></span>
         </div>
 
         <div class="item">
             <div>Lời nhắn: </div>
-            <textarea name="message" rows="4" cols="50"></textarea>
+            <textarea name="message" rows="4" cols="50" placeholder="Ghi chú trên hóa đơn, người gửi,..."></textarea>
         </div>
 
         <div class="item">

@@ -9,12 +9,15 @@ body {
 }
 
 header {
+    position: fixed;
     width: 100%;
     background: #ffb610;
     padding: 0 1rem;
     display: flex;
     overflow: hidden;
     justify-content: space-between;
+    top: 0;
+    z-index: 100000;
 }
 
 header span {
@@ -102,12 +105,22 @@ header ul li a:hover {
 #check {
     display: none;
 }
-
+@media (min-width: 858px) {
+    .container-body {
+        margin-top: 100px;
+    }
+}
 @media (max-width: 858px) {
     .checkbtn {
         display: block;
         
     }
+
+    .container-body {
+        margin-top: 50px;
+    }
+
+    
 
     .aaa {
         border-right: none;
@@ -193,22 +206,22 @@ header ul li a:hover {
         z-index: 20;
     }
 }
+/*****************************************************************************************************************/
 
-.first-part {
-    
-    top: 400px;
+
+
+.first-part {      
     width: 100%;
-    height: 24em;
     background: rgb(237, 243, 243);
     
 }
 
 .carousel {
     position: relative;
-    width: 70%;
+    width: 50%;
     height: 21em;
     background: black;
-    margin: 0 15%; 
+    margin: 0 auto; 
     overflow: hidden;
     border-radius: 2px;
 }
@@ -232,7 +245,7 @@ header ul li a:hover {
     z-index: 1;
     cursor: pointer;
     position: absolute;
-    font-size: 5rem;
+    font-size: 2.5rem;
     border-radius: 3px;
 }
 
@@ -258,15 +271,34 @@ header ul li a:hover {
 
 .first-part #dotsContainer .dots {
     display: inline-block;
-    width: 25px;
-    height: 25px;
+    width: 18px;
+    height: 18px;
     background: black;
     border-radius: 50%;
     cursor: pointer;
     transition: black .5s;
-    margin: 0 20px;
+    margin: 0 10px;
+}
+/*****************************************************************************************************************/
+/*MEDIA FOR CAROUSEL */
+@media (max-width: 800px) {
+    .carousel {
+        position: relative;
+        width: 55%;
+        height: 18em;
+    }
+    
 }
 
+@media (max-width: 600px) {
+    .carousel {
+        position: relative;
+        width: 78%;
+        height: 13em;
+    }
+}
+/*****************************************************************************************************************/
+/*AUTO NEXT IMG*/
 .first-part #dotsContainer .dots:hover, .first-part #dotsContainer .active {
     background: gray;
 }
@@ -342,7 +374,7 @@ header ul li a:hover {
         opacity: 1;
     }
 }
-
+/*****************************************************************************************************************/
 
 /*Carousel, content*/
 .content {  
@@ -397,7 +429,7 @@ header ul li a:hover {
     word-break: break-word;
     color: white;
 }
-
+/*****************************************************************************************************************/
 /*PRODUCT*/
 .content .product {   
     width: 94%;  
@@ -409,16 +441,18 @@ header ul li a:hover {
 } 
 .content .product .product-item {
     width: 19%;
-    height: 23rem; 
+    
     background-color: #ffb610;
     text-align: center;
     margin: 0.5%;
 }    
 
-.content .product .product-item .cart{
-    background-color: red;
-    padding: 0.5rem 0;
+.content .product .product-item button{
+    background-color: gainsboro;
+    padding: .5rem .2rem;
     bottom: 0;
+    margin-bottom: .5rem;
+    border: none;
 }
 
 .content .product .product-item a{
@@ -436,10 +470,11 @@ header ul li a:hover {
 
 .content .product .product-item img{
     width: 100%;
-    height: 70%;
+    height: 13rem;
     
 }
 
+/*****************************************************************************************************************/
 @media (max-width: 800px) {
     .content .product .product-item {
         width: 32.533%;
@@ -473,8 +508,13 @@ header ul li a:hover {
     .content .category .item span {
         font-size: .7rem;     
     }
-}
 
+    .content .product .product-item img{
+        height: 11rem;
+        
+    }
+}
+/*****************************************************************************************************************/
 /*MY CART*/
 #my-cart {
     position: fixed;

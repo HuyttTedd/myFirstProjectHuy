@@ -13,6 +13,32 @@
 </head>
 <body>
 
+    <!--chuyển hướng từ trang chi tiết sản phẩm-->
+    <?php
+    if (isset($_REQUEST["id-from-detailed-product"])) {
+        $id3 = $_REQUEST["id-from-detailed-product"];
+        if (isset($_SESSION["id_product"])) {
+            $arr_id = array_column($_SESSION["id_product"], 'id_product');
+            //$_SESSION["id_product"][$count] = $id;
+            if (in_array($id3, $arr_id)) {
+            } else {
+                $count = count($_SESSION["id_product"]);
+                // $item_array = [
+                //     'id_product' => $id
+                // ];
+                $_SESSION["id_product"][$count] = ['id_product' => $id3];
+            }
+        } else {
+            // $item_array = [
+            //     'id_product' => $id
+            // ];
+            $_SESSION["id_product"][0] = ['id_product' => $id3];
+        }
+    }
+    
+    ?>
+
+    <!------------------------------------------------------------------------->
     <div class="container">
     
     <?php
@@ -48,7 +74,7 @@
         }
 ?>    
         <div class="bill">
-            <div class="image"><img src="cake.jpeg" alt=""></div>
+            <div class="image"><img src="<?php echo $row["product_image"]; ?>" alt=""></div>
             <div class="content">
                 <p><?php echo $row["name_product"]; ?></p>
                 <span>
@@ -65,7 +91,7 @@
                    <a href="#"><i onclick="plus(<?php echo $row['id_product']; ?>)" class="fas fa-plus"></i></a>
                 </span>
                 <p class="price-product">
-                    Đơn giá: <?php echo $row["price"]; ?> 
+                    Đơn giá: <?php echo number_format($row["price"]); ?> VNĐ
                 </p>
                 <form action="pay.php" method="post">
                     <input type="text" id="delete-item" name="delete-item" value="<?php echo $row['id_product']; ?>" >
@@ -102,7 +128,7 @@
     <!--calculate-->
     <div class="money">
         <div class="sum">
-            <p>Tổng tiền: <span id="sum-price"><?php echo $total; ?></span></p>
+            <p>Tổng tiền: <span id="sum-price"><?php echo number_format($total); ?> VNĐ</span></p>
         </div>
         <div class="buy-it">
             <a href="info.php">Mua hàng</a>

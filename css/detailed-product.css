@@ -6,6 +6,10 @@
     font-family: 'Roboto', sans-serif;
 }
 
+body {
+    background-color: #dfcdbf;
+}
+
 .detailed-product {
     width: 89%;
     margin: 2rem auto;
@@ -21,27 +25,33 @@
     grid-area: small-img;
     height: 21rem;
     overflow-y: scroll;
+    border: 1px solid #c38f54;
+    background: #f2d4b8;
 }
 
 .detailed-product .small-img img {
     width: 100%;
+    
+    height: 4rem;
 }
 .detailed-product .img-product{
     word-break: break-all;
     grid-area: img;
-    border: 1px solid white;
 }
 
 .detailed-product .img-product img {
     width: 100%;
-    border: 2px solid green;
+    border: 1px solid #c38f54;
     word-break: break-all;
+    height: 100%;
 }
 
 .detailed-product .description-product {
     grid-area: desc;
     word-break: break-all;
     padding: 1rem;
+    border: 1px solid #c38f54;
+    background: #f2d4b8;
 }
 
 .detailed-product .description-product img {
@@ -81,7 +91,7 @@
         margin: 0 auto;
         display: grid;
         grid-template-columns: 100%;
-        grid-template-rows: 1fr 6rem .5fr;
+        grid-template-rows: 1fr 5rem 1fr;
         grid-template-areas: 
         "img" 
         "small-img"
@@ -90,13 +100,13 @@
 
     .detailed-product .small-img {
         display: flex;
-        
         height: 6rem;
         grid-area: small-img;
         overflow-x: scroll;
     }
     .detailed-product .small-img img {
         width: 26%;
+        height: 5rem;
         border-right: 1px solid snow;
     }
     
@@ -109,6 +119,7 @@
         
         grid-area: desc;
     }
+
 }
 
 #buy {
@@ -122,7 +133,7 @@
 #buy .price {
     font-weight: bold;
     font-size: 1.7rem;
-    color: brown;
+    color: #c38f54;
 }
 
 #buy .title-product {
@@ -132,23 +143,17 @@
     font-weight: bold;
 }
 
-#buy .quantity input {
-    width: 8rem;
-    height: 1.5rem;
-    border-radius: 4px;
-    border: none;
-    
-}
-
 
 #buy .box {
     margin-top: .6rem;
     text-align: center;
 }
-#buy .box button {
-    background-color: orange;
+#buy .box a {
+    background-color: #c38f54;
     border: none;
+    text-decoration: none;
     padding: .7rem 2rem;
+    color: black;
     font-size: 1.3rem;
     font-weight: bold;
 
@@ -169,16 +174,36 @@
 
 .about-product .img-container img {
     width: 100%;
+    height: 18rem;
     border: 2px solid white;
     margin-top: 2rem;
 }
 
+@media (max-width: 600px) {
+    .about-product .img-container {
+        width: 70%;
+    }
 
+    .about-product .img-container img {    
+        height: 11rem;
+        border: 2px gainsboro;
+    }
+}
+
+@media (max-width: 800px) {
+    .about-product .img-container {
+        width: 60%;
+    }
+
+    .about-product .img-container img {    
+        height: 17rem;
+        border: 2px gainsboro;
+    }
+}
 /*Sản phẩm tương tự*/
 .similar-product {
     margin: 2rem auto;
     width: 90%;
-    
     border: 1px solid green;
 }
 
@@ -189,16 +214,176 @@
     text-align: center;
 }
 
-.similar-product .box-similar-product {
+
+
+.font {
+    font-size: 1.7rem;
+}
+
+
+
+/*********PRODUCT*************************************************************************/
+.content {  
+    width: 100%;    
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+}
+
+.content .arrange {
+    width: 94%;
+    height: 2.5rem;
+    background: greenyellow;
+    margin: 0 auto;
+}
+
+/*CATEGORY*/
+.content .category {
     display: flex;
-    width: 100%;
+    width: 94%;
+    margin: 0 auto;  
+    
+    display: flex;
     flex-wrap: wrap;
+}
+
+.content .category .item {
+    width: 12.5%;
+    position: relative;
+    border: 1px solid white;
     
 }
 
-.similar-product .box-similar-product img {
-    padding: 1%;
-    width: 25%;
+.content .category .item a {
+    text-decoration: none;
+}
+.content .category .item div {
+    background-color: red;
+    width: 100%;
+    height: 3.9rem;
+    border-radius: 5px;
+    z-index: 1;
 }
 
+.content .category .item span {
+    width: 98%;
+    position: absolute;
+    text-align: center;
+    z-index: 2;
+    left: 1%;
+    top: 30%;
+    font-size: 1rem;
+    word-break: break-word;
+    color: white;
+}
+/*****************************************************************************************************************/
+/*PRODUCT*/
+.content .product {   
+    width: 94%;  
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 1px;
+} 
+.content .product .product-item {
+    width: 19%;
+    
+    background-color: #ffb610;
+    text-align: center;
+    margin: 0.5%;
+}    
 
+.content .product .product-item button{
+    background-color: gainsboro;
+    padding: .5rem .2rem;
+    bottom: 0;
+    margin-bottom: .5rem;
+    border: none;
+}
+
+.content .product .product-item a{
+    text-decoration: none;
+    color: black;
+    font-size: 1.1em;
+    word-break: break-word;
+} 
+
+.content .product .product-item a span{
+    line-height: 2rem;
+    color: red;
+    
+} 
+
+.content .product .product-item img{
+    width: 100%;
+    height: 13rem;
+    
+}
+
+/*****************************************************************************************************************/
+@media (max-width: 800px) {
+    .content .product .product-item {
+        width: 32.533%;
+        
+        border: 1px solid white;
+        margin: 0.4%;
+    } 
+
+    .content .category .item div {
+        height: 3.1rem;
+    }
+
+    .content .category .item {
+        width: 25%;
+    }
+}
+
+@media (max-width: 600px) {
+    .content .product .product-item {
+        width: 49%;
+        border: 1px solid white;
+        margin: 0.5%;
+    } 
+    .content .product .product-item a{
+        font-size: .8em;
+    } 
+    .content .category .item {
+        width: 25%;
+    }
+
+    .content .category .item span {
+        font-size: .7rem;     
+    }
+
+    .content .product .product-item img{
+        height: 11rem;
+        
+    }
+}
+
+/*****************************************************************************************************************/
+/*MY CART*/
+#my-cart {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    font-size: 3rem;
+    background-color: #effff4;
+    padding: 1rem;
+    border-radius: 50%;
+   
+}
+
+#my-cart a i {
+    color: #68db1b;
+}
+
+#my-cart p {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 0 .5rem;
+    font-size: 1.5rem;
+    background-color: #ffb610;
+    border-radius: 50%;
+}
