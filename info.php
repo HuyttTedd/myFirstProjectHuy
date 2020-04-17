@@ -11,6 +11,7 @@
 </head>
 <body>
     <?php
+
         function checkPhone($val) {
             $pattern = '#^(03|05|07|08|09)[0-9]{8}$#';
             if(preg_match($pattern, $val)) {
@@ -29,13 +30,17 @@
                 $phoneErr = "Số điện thoại không hợp lệ";
             }
         }
+        $name = "";
+        if(isset($_SESSION["name"])) {
+            $name = $_SESSION["name"];
+        }
     ?>
 
     <div class="container-info">
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST"> 
         <div class="item">
             <div>Họ và tên:</div>
-            <input type="text" name="name">
+            <input type="text" name="name" value="<?php echo $name; ?>">
             <span><?php echo $nameErr;?></span>
         </div>
 
@@ -80,7 +85,7 @@
         }
         ?>
         <div class="item">
-            <div>Tổng tiền: <?php echo $_SESSION["total"]; ?></div>
+            <div>Tổng tiền: <?php echo number_format($_SESSION["total"]); ?> VNĐ</div>
             
         </div>
 

@@ -4,6 +4,8 @@
     box-sizing: border-box;
 }
 
+
+
 body {
     font-family: sans-serif;
 }
@@ -105,6 +107,20 @@ header ul li a:hover {
 #check {
     display: none;
 }
+
+.customer {
+    
+    border-radius: 5px;
+    padding: .5rem .5rem;
+    background-color: wheat;
+    color: black;
+}
+
+.customer:hover {
+    background-color: #f2d4b8;
+}
+
+
 @media (min-width: 858px) {
     .container-body {
         margin-top: 100px;
@@ -185,12 +201,12 @@ header ul li a:hover {
         left: -100%;
         text-align: center;
         display: block;
-        
+        justify-content: start;
     }
 
     header ul li {
         border-bottom: 1px solid white;
-        
+        margin-top: 0;
         
     }
 
@@ -208,7 +224,22 @@ header ul li a:hover {
 }
 /*****************************************************************************************************************/
 
+@media (min-width: 858px) {
+    .container-body {
+        margin-top: 100px;
+    }
+}
+@media (max-width: 858px) {
+    .checkbtn {
+        display: block;
+        
+    }
 
+    .container-body {
+        margin-top: 50px;
+    }
+
+}
 
 .first-part {      
     width: 100%;

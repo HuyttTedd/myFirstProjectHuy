@@ -14,45 +14,9 @@
 </head>
 <body>
     <!--Header-->
-    <header>
-        
-        <span>LOGO</span>
-        
-
-        <input type="checkbox" id="check">
-        <label for="check" class="checkbtn"><i class="fa fa-bars" aria-hidden="true"></i></label>
-        
-
-    <div class="header1">
-        <!--Form-->
-        <form action="" id="search">
-            <input type="text" id="search" placeholder="Bạn muốn mua gì?">
-        </form>
-
-        <div class="navlink">
-            <a href="">Trang chủ</a>
-            <a href="">Chủ đề</a>
-            <a href="">Ưu đãi</a>
-            <a href="">Xem bói</a>
-        </div>
-
-        
-    </div>
-
-       <?php
-            if(isset($_SESSION["phone_number"])) {
-                echo '<ul>
-                <li><a href=""><li>'.$_SESSION["name"].'</li></a></li>
-                    </ul>';
-            } else {
-                echo '<ul>
-                <li><a href="" class="aaa">Đăng nhập</a></li>
-                <li><a href="">Đăng ký</a></li> 
-                    </ul>';
-            }
-       ?>
-    
-    </header>
+    <?php
+        include("header.php");
+    ?>
 
         <!--body-->
     <div class="container-body">

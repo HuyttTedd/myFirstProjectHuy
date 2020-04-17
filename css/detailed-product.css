@@ -9,7 +9,9 @@
 body {
     background-color: #dfcdbf;
 }
-
+.container-detail {
+    margin-top: 110px;
+}
 .detailed-product {
     width: 89%;
     margin: 2rem auto;

@@ -13,7 +13,9 @@
 
 </head>
 <body>
-
+    <?php
+        include("header.php");
+    ?>
 <?php
         $id1 = $_REQUEST["id_product"];
         include("connect.php");
@@ -39,6 +41,8 @@
         }
 ?>
     
+
+ <div class="container-detail">
 
     <div class="detailed-product">   
         <div class="img-product">
@@ -159,7 +163,7 @@
         </div>
     </div>
     
-
+    </div>
     <!--Giỏ hàng-->
     <div id="my-cart">
         <a href="pay.php">

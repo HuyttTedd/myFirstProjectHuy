@@ -12,7 +12,9 @@
 
 </head>
 <body>
-
+    <?php
+        include("header.php");
+    ?>
     <!--chuyển hướng từ trang chi tiết sản phẩm-->
     <?php
     if (isset($_REQUEST["id-from-detailed-product"])) {

@@ -24,7 +24,7 @@ session_start();
         }
 
         function checkName($val) {
-            $pattern = '#^.{2,20}$#';
+            $pattern = '#^.{1,30}$#';
             if(preg_match($pattern, $val)) {
                 return true;
             } else {
@@ -94,7 +94,7 @@ session_start();
                 $nameErr = "";
                 $validName = true;
             } else {
-                $nameErr = "Tên có độ dài từ 2-20 ký tự!";
+                $nameErr = "Tên có độ dài tối đa 30 ký tự!";
                 $validName = false;
             }
 
