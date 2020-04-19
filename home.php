@@ -9,7 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/home.css">
-    <script src="https://kit.fontawesome.com/f1e0b185be.js" crossorigin="anonymous"></script>
+    <link href="fontawesome/css/fontawesome.css" rel="stylesheet">
+    <link href="fontawesome/css/brands.css" rel="stylesheet">
+    <link href="fontawesome/css/solid.css" rel="stylesheet">
 
 </head>
 <body>
@@ -144,9 +146,14 @@
         }
     </script>
 
+    <?php   
+       session_destroy();                                                                     
+    //$conn->close();
+    ?>
+
+    <!--FOOTER-->
     <?php
-      //session_destroy();
-      //$conn->close();
+        include("footer.php");
     ?>
 </body>
 </html>

@@ -15,8 +15,14 @@ body {
 .container-info {
     background-color: rgb(226, 233, 168);
     width: 70%;
-    margin: 5rem auto;
+    margin: 110px auto 0;
     border-radius: 10px;
+}
+
+@media (max-width: 858px) {
+    .container-info {
+        margin-top: 55px;
+    }
 }
 
 .container-info .item {

@@ -1,0 +1,30 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.footer {
+    background-color: #f5f5ef;
+    margin-top: 1rem;
+    margin-bottom: 5rem;
+    padding: 1rem 0 1rem;
+    border-top: 1px solid #999900;
+    border-bottom: 1px solid #999900;
+    font-size: .9rem;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.contact, .aboutus {
+    padding: 0 .7rem;
+}
+
+.title {
+    color: #999900;
+}
+
+.last {
+    width: 100%;
+    text-align: center;
+}

@@ -8,9 +8,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="info.css">
+    <link href="fontawesome/css/fontawesome.css" rel="stylesheet">
+    <link href="fontawesome/css/brands.css" rel="stylesheet">
+    <link href="fontawesome/css/solid.css" rel="stylesheet">
 </head>
 <body>
+<?php
+    include("header.php");
+?>
     <?php
+
+$display = [
+    'name' => '',
+    'phone_number'=>'',
+    'address' =>'',
+    'message' => ''      
+];
+
+        $name = "";
+        if(isset($_SESSION["name"])) {
+            $name = $_SESSION["name"];
+        }
 
         function checkPhone($val) {
             $pattern = '#^(03|05|07|08|09)[0-9]{8}$#';
@@ -21,19 +39,70 @@
             }
         }
 
-        $phoneErr = $addressErr = $nameErr = "";
-        if($_SERVER["REQUEST_METHOD"] === "POST") {
-            $phone = $_POST["phone-number"];
-            if(checkPhone($phone)) {
-                header('location:http://localhost/baitapthunhat/bill.php');
+        function checkName($val) {
+            $pattern = '#^.{1,30}$#';
+            if(preg_match($pattern, $val)) {
+                return true;
             } else {
-                $phoneErr = "Số điện thoại không hợp lệ";
+                return false;
             }
         }
-        $name = "";
-        if(isset($_SESSION["name"])) {
-            $name = $_SESSION["name"];
+
+        function checkAddress($val) {
+            $pattern = '#^.{6,30}$#';
+            if(preg_match($pattern, $val)) {
+                return true;
+            } else {
+                return false;
+            }
         }
+
+
+
+        $phoneErr = $addressErr = $nameErr = "";
+        $phoneValid = $addValid = $nameValid = false;
+        if($_SERVER["REQUEST_METHOD"] === "POST") {
+            $phone = $_POST["phone_number"];
+            $nameCustomer = $_POST["name"];
+            $addr = $_POST["address"];
+            $message = $_POST["message"];
+            foreach($_POST as $key => $value) {
+                if(isset($_POST[$key])) {
+                    $display[$key] = htmlspecialchars($value);
+                }
+            }
+
+            if(checkPhone($phone)) {
+                //header('location:http://localhost/baitapthunhat/bill.php');
+                $phoneValid = true;
+            } else {
+                $phoneErr = "Số điện thoại không hợp lệ!";
+            }
+
+            if(checkAddress($addr)) {
+            
+                $addValid = true;
+            } else {
+                $addressErr = "Địa chỉ không hợp lệ!";
+            }
+
+            if(checkName($nameCustomer)) {
+                
+                $nameValid = true;
+            } else {
+                $nameErr = "Tên không hợp lệ!";
+            }
+
+            if ($phoneValid == true && $addValid == true && $nameValid == true) {
+                
+                foreach($display as $key => $value) {
+                    $_SESSION["info_customer"][$key] = htmlspecialchars($value);
+                }
+                header('location:http://localhost/baitapthunhat/profile.php');
+            } 
+
+        }
+
     ?>
 
     <div class="container-info">
@@ -46,7 +115,7 @@
 
         <div class="item">
             <div>Số điện thoại:</div>
-            <input type="text" name="phone-number">
+            <input type="text" name="phone_number">
             <span><?php echo $phoneErr;?></span>
         </div>
 

@@ -54,8 +54,9 @@ session_start();
             $res = mysqli_query($conn, $sql);
             $data = mysqli_fetch_array($res);
             if(mysqli_num_rows($res) > 0) {
-                $_SESSION["phone_number"] = $data["phone_number"];
-                $_SESSION["name"] = $data["name"];
+                $_SESSION['info_customer']["phone_number"] = $data["phone_number"];
+                $_SESSION['info_customer']["name"] = $data["name"];
+                $_SESSION['info_customer']["id_customer"] = $data["id"];
                 header('location:http://localhost/baitapthunhat/home.php');
 
             } else {
