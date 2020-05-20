@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/detailed-product.css">
+    <link rel="stylesheet" href="detailed-product.css">
     <link href="fontawesome/css/fontawesome.css" rel="stylesheet">
     <link href="fontawesome/css/brands.css" rel="stylesheet">
     <link href="fontawesome/css/solid.css" rel="stylesheet">
@@ -48,7 +48,9 @@
 
     <div class="detailed-product">   
         <div class="img-product">
-        <img src="<?php echo $img;?>" alt="">
+        <?php
+                echo '<img src="'.$img.'"/>';
+        ?>
         </div>
 
 
@@ -145,7 +147,9 @@
 ?>
         <div class="product-item">
                 <a href="detailed-product.php?id_product=<?php echo $row2['id_product'];?>">
-                        <img src="<?php echo $row2["product_image"]; ?>">
+                <?php
+                echo '<img src="'.$row2['product_image'].'"/>';
+                ?>
                         <!--Limit word < 45-->
                         <p><?php echo $row2["name_product"]; ?></p>
                         <span><?php echo number_format($row2["price"]); ?> VNĐ</span>                       
@@ -196,5 +200,9 @@
             xmlhttp.send();
         }
     </script>
+
+<?php
+        include("footer.php");
+    ?>
 </body>
 </html>

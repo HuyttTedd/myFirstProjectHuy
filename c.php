@@ -52,7 +52,7 @@ function generateRandomString($length = 11) {
     $res = mysqli_query($conn, $sql);
     while ($row = mysqli_fetch_array($res)) {
         
-        echo '<a href="#"><img src="data:image/jpeg;base64,'.base64_encode($row['product_image']). ' " />   </a>';
+        echo '<a href="#"><img src="data:image/jpeg;base64,'.base64_encode($row['product_image']).'"/></a>';
     }
 
     

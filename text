@@ -7,11 +7,41 @@
 7. quantity reseted when reload
 
 
-- image must be square
+
 -enter input must be valid
 - complete remain bill.php ()
 -profile.php(bills)
 
 
 
-mau chu dao #e6e600
+
+rgb(204, 204, 0)
+mau chu dao #b3b300
+mau nen #ffff66
+gửi email
+-------hightlight
+-------------sắp xếp
+----------cài lại session trang cuối ấy
+
+
+
+fix để trống số lượng sản phẩm nhưng mà vẫn gửi đi
+
+sửa pay.js pay.php info.php  profile.php 
+<div class="super-admin">
+    <div class='item'>
+        <a href="superadmin.php">Danh sách tất cả admin</a>
+    </div>
+    <div class='item'>
+        <a href="addAdmin.php">Thêm admin</a>
+    </div>
+    <div class='item'>
+        <a href="addProduct.php">Sửa thông tin admin</a>
+    </div>
+    <div class='item'>
+        <a href="updateProduct.php">Xóa admin</a>
+    </div>
+</div>
+
+#808000#808000#808000#808000
+#808000

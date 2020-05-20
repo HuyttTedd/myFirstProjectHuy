@@ -57,6 +57,8 @@ session_start();
                 $_SESSION['info_customer']["phone_number"] = $data["phone_number"];
                 $_SESSION['info_customer']["name"] = $data["name"];
                 $_SESSION['info_customer']["id_customer"] = $data["id"];
+                $_SESSION['info_customer']["level"] = $data["level"];
+
                 header('location:http://localhost/baitapthunhat/home.php');
 
             } else {
@@ -77,7 +79,7 @@ session_start();
         <span class="error"><?php echo $phoneErr; ?></span>
         <div class="info">
             <i class="fas fa-unlock-alt"></i>
-            <input type="text" placeholder="Password" name="pass" value="<?php echo $display["pass"];?>">
+            <input type="password" placeholder="Password" name="pass" value="<?php echo $display["pass"];?>">
         </div>
         <span class="error"><?php echo $passErr; ?></span>
             <input type="submit" name="" id="btn1" value="Đăng nhập ngay!">
@@ -85,8 +87,11 @@ session_start();
         <p class="choice"><span class="choice1">Chưa có tài khoản?</span></p>
         
 
-        <button class="btn2"><a href="#">Đăng ký ngay!</a></button>
+        <button class="btn2"><a href="sign-up.php">Đăng ký ngay!</a></button>
         <div class="forgot"><a href="#">Quên mật khẩu?</a></div>
     </div>
+    <?php
+        include("footer.php");
+    ?>
 </body>
 </html>

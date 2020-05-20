@@ -34,18 +34,19 @@
     ?>
     <div class="item">
         <div class="line"></div>
-                <p>ID: <?php echo $idToPrint; ?></p>
+                
     <?php
         $sql4 = "SELECT * from products where id_product = '$idToPrint'";
         $res2 = mysqli_query($conn, $sql4);
         
         while ($row2 = mysqli_fetch_array($res2)) {
-            echo '<p>Tên sản phẩm: '.$row2["name_product"].'</p>';
+            echo '<p><span class="red">Tên sản phẩm:</span> '.$row2["name_product"].'</p>';
+            echo '<p><span class="red">Đơn giá:</span> '.number_format($row2["price"]).' VNĐ</p>';
         }
     ?>
 
         
-                <div>Số lượng: <?php echo $row["product_quantity"]; ?></div>
+                <div><span class="red">Số lượng:</span> <?php echo $row["product_quantity"]; ?></div>
                 <div class="line"></div>
             </div>
 
@@ -53,7 +54,7 @@
         }
     ?>
 
-            <p>Tổng tiền: <?php echo number_format($_SESSION["total"]); ?> VNĐ</p>
+            <p class="red">Tổng tiền: <?php echo number_format($_SESSION["total"]); ?> VNĐ</p>
         </div>
     </div>
 </body>

@@ -5,6 +5,7 @@
 }
 body {
     background-color: #f2d4b8;
+    margin-bottom: 6rem;
 }
 .container {
     width: 55%;
@@ -84,11 +85,16 @@ body {
     border-radius: 10px;
 }
 
-
+@media (max-width: 858px) {
+    .container {
+        margin-top: 60px;
+ 
+    }
+}
 @media (max-width: 800px) {
     .container {
         width: 96%;
-        margin: 0 auto 4rem;
+        
   
     }
 
@@ -114,8 +120,6 @@ body {
 @media (max-width: 600px) {
     .container {
         width: 96%;
-       
-        margin: 0 auto 4rem;
  
     }
 

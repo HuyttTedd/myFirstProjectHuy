@@ -30,7 +30,7 @@
         
         include("connect.php");
         if(!isset($_SESSION["info_customer"]["id_customer"])) {
-             $_SESSION["info_customer"]["id_customer"] = "NONE";
+            $_SESSION["info_customer"]["id_customer"] = "NONE";
         }
         if(empty($_SESSION["info_customer"]["message"])) {
             $_SESSION["info_customer"]["message"] = "NONE";
@@ -53,9 +53,12 @@
                 $valid1 = false;
 
             }
-        foreach($_SESSION["display_quantity"] as $key => $value) {      
-                $sql2 = "INSERT INTO billdetailed(product_id, product_quantity, bill_id, total)  
-                VALUES ('$key', '$value', '$randomStr', '$total')";
+        foreach($_SESSION["display_quantity"] as $key => $value) { 
+                $quan = $value["quantity"];
+                $namee = $value["product_name"];
+                $pricee = $value["price"];     
+                $sql2 = "INSERT INTO billdetailed(product_id, product_name, product_quantity, product_price, bill_id, total)  
+                VALUES ('$key', '$namee', '$quan', '$pricee', '$randomStr', '$total')";
                 
                 if ($conn->query($sql2) === TRUE) {
                     $valid2 = true;
@@ -69,7 +72,7 @@
         if ($valid1 == true && $valid2 == true) {
             header('location:http://localhost/baitapthunhat/profile2.php');
         } else {
-            echo "chim to ko lo chet doi";
+            echo "You have some ERORRS";
         }
         //$sql2 = "INSERT into billdetailed(product_id, product_name, product_price, product_quantity, bill_id) 
         //values ()";

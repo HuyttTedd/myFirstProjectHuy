@@ -15,7 +15,7 @@ session_start();
         $res = mysqli_query($conn, $sql);
         $row = mysqli_fetch_array($res);           
                 $_SESSION["count_money"][$row['id_product']] = [$row["price"] => $quantity];
-                $_SESSION["display_quantity"][$row['id_product']] = $quantity;
+                $_SESSION["display_quantity"][$row['id_product']]["quantity"] = $quantity;
                 foreach($_SESSION["count_money"] as $key => $value) {
                     foreach($value as $key2 => $value2) {
                         $total += (int)$key2 * (int)$value2;

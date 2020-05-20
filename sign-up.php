@@ -14,23 +14,24 @@ session_start();
 <body>
 <?php
         //Pattern 
-        function checkPhone($val) {
-            $pattern = '#^(03|05|07|08|09)[0-9]{8}$#';
-            if(preg_match($pattern, $val)) {
-                return true;
-            } else {
-                return false;
-            }
-        }
+        include("pattern.php");
+        // function checkPhone($val) {
+        //     $pattern = '#^(03|05|07|08|09)[0-9]{8}$#';
+        //     if(preg_match($pattern, $val)) {
+        //         return true;
+        //     } else {
+        //         return false;
+        //     }
+        // }
 
-        function checkName($val) {
-            $pattern = '#^.{1,30}$#';
-            if(preg_match($pattern, $val)) {
-                return true;
-            } else {
-                return false;
-            }
-        }
+        // function checkName($val) {
+        //     $pattern = '#^.{1,30}$#';
+        //     if(preg_match($pattern, $val)) {
+        //         return true;
+        //     } else {
+        //         return false;
+        //     }
+        // }
 
         // function checkEmail($val) {
         //     $pattern = '#^[a-zA-Z][a-zA-Z0-9_\.]{2, 32}@[a-zA-Z0-9]{2,10}(\.[a-zA-Z]{2,5}){1,3}$#';
@@ -41,15 +42,15 @@ session_start();
         //     }
         // }
 
-        function checkPass($val) {
-            $pattern = '#^(?=.*\d)(?=.*([a-z]|[A-Z])).{6,25}$#';
-            if(preg_match($pattern, $val)) {
-                return true;
-            } else {
-                return false;
-            }
+        // function checkPass($val) {
+        //     $pattern = '#^(?=.*\d)(?=.*([a-z]|[A-Z])).{6,25}$#';
+        //     if(preg_match($pattern, $val)) {
+        //         return true;
+        //     } else {
+        //         return false;
+        //     }
 
-        }
+        // }
     ?>
 
 
@@ -136,7 +137,7 @@ session_start();
                 $ress = mysqli_query($conn, $sqlIns);
                 if ($ress === true) {
                     
-                    header('location:http://localhost/mywebshop/c.php');
+                    header('location:http://localhost/baitapthunhat/welcome.php');
                 } else {
                     echo "Error: " ."<br>" . $conn->error;
                 }
@@ -185,7 +186,7 @@ session_start();
         </form>
         <p class="choice"><span class="choice1">Đã có tài khoản?</span></p>
 
-        <button class="btn2"><a href="#">Đăng nhập ngay!</a></button>
+        <button class="btn2"><a href="login.php">Đăng nhập ngay!</a></button>
 
     </div>
 </body>

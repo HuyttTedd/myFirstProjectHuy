@@ -8,6 +8,7 @@
 
 body {
     font-family: sans-serif;
+    background-color: #ffffcc;
 }
 
 header {
@@ -243,7 +244,7 @@ header ul li a:hover {
 
 .first-part {      
     width: 100%;
-    background: rgb(237, 243, 243);
+    background: #ffffcc;
     
 }
 
@@ -413,14 +414,16 @@ header ul li a:hover {
     margin-top: 2rem;
     margin-bottom: 3rem;
 }
-
+/*
 .content .arrange {
-    width: 94%;
+    width: 90%;
     height: 2.5rem;
-    background: greenyellow;
+    background: #b3b300;
     margin: 0 auto;
+    border-radius: 8px;
+    line-height: 40px;
 }
-
+*/
 /*CATEGORY*/
 .content .category {
     display: flex;
@@ -442,7 +445,7 @@ header ul li a:hover {
     text-decoration: none;
 }
 .content .category .item div {
-    background-color: red;
+    background-color: #808000;
     width: 100%;
     height: 3.9rem;
     border-radius: 5px;
@@ -475,7 +478,7 @@ header ul li a:hover {
     background-color: #ffb610;
     text-align: center;
     margin: 0.5%;
-    border-radius: 10px;
+    border-radius: 8px;
 }    
 
 .content .product .product-item button{
@@ -489,7 +492,7 @@ header ul li a:hover {
 .content .product .product-item a{
     text-decoration: none;
     color: black;
-    font-size: .9em;
+    font-size: 1.1em;
     word-break: break-word;
 } 
 
@@ -504,59 +507,6 @@ header ul li a:hover {
     
     
 }
-
-.content .product .hightlight {
-    margin-top: 50px;
-    background-color: green;
-    width: 100%;
-    height: 500px;
-}
-
-.content .product .hightlight .topic {
-    background-color: yellow;
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.content .product .hightlight .topic .hightlight-items {
-    flex: 25%;
-    max-width: 25%;
-    
-}
-
-
-/*sssssssssssssssssssssssssssssssssssssssssssssssssssss chỉnh cái topic*/
-.hightlight-items button{
-    background-color: gainsboro;
-    padding: .5rem .2rem;
-    bottom: 0;
-    margin-bottom: .5rem;
-    border: none;
-}
-
- .hightlight-items a{
-    text-decoration: none;
-    color: black;
-    font-size: 1.1em;
-    word-break: break-word;
-} 
-
-.hightlight-items a span{
-    line-height: 2rem;
-    color: red;
-    
-} 
-
-.hightlight-items img{
-    width: 100%;
-    
-    
-}
-
-/*sssssssssssssssssssssssssssssssssssssssssssssssssssss*/
-
-
 
 /*****************************************************************************************************************/
 @media (max-width: 800px) {
@@ -581,7 +531,7 @@ header ul li a:hover {
         width: 49%;
         border: 1px solid white;
         margin: 0.5%;
-    }
+    } 
     .content .product .product-item a{
         font-size: .8em;
     } 
@@ -620,4 +570,33 @@ header ul li a:hover {
     font-size: 1.5rem;
     background-color: #ffb610;
     border-radius: 50%;
+}
+.container-paginate {
+    text-align: center;
+    margin: 1.5rem auto;
+}
+.paginate {
+    padding: .5rem .8rem;
+    background-color: #808000;
+    text-decoration: none;
+    margin-left: .6rem;
+    color: white;
+    border-radius: 5px;
+}
+
+.paginate:hover {
+    background-color: #e6e600;
+    color: #4d4d00;
+}
+
+.arrange #arrange {
+    float: right;
+    margin: 1rem 4%;
+    font-size: 1rem;
+    padding: .5rem;
+    border: none;
+    outline: none;
+    background-color: #999900;
+    border-radius: 3px;
+    color: white;
 }

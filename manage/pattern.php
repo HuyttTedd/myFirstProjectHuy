@@ -10,7 +10,7 @@
         }
 
         function checkName($val) {
-            $pattern = '#^.{3,30}$#';
+            $pattern = '#^.{1,30}$#';
             if(preg_match($pattern, $val)) {
                 return true;
             } else {

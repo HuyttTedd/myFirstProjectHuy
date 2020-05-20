@@ -9,7 +9,14 @@
     <title>Document</title>
 </head>
 <body>
-
+<?php
+        if(!isset($_SESSION["admin_info"]["admin_phone"])) {
+            header('location:http://localhost/baitapthunhat/manage/index.php');
+        }
+?>
+<div>
+        <a style="text-decoration: none; color: red" href="admin.php">Trở về trang chủ</a>
+</div>
 <?php
     include("connect2.php");
     $confirm = "";

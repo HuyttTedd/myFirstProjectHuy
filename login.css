@@ -3,7 +3,9 @@
     padding: 0;
     box-sizing: border-box;
 }
-
+body {
+    background-color: #b3b300;
+}
 .container {
     position: relative;
     max-width: 370px;

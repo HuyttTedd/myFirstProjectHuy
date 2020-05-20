@@ -19,16 +19,14 @@
     <?php
 
 $display = [
-    'name' => '',
-    'phone_number'=>'',
     'address' =>'',
     'message' => ''      
 ];
 
-        $name = "";
-        if(isset($_SESSION["name"])) {
-            $name = $_SESSION["name"];
-        }
+        // $name = "";
+        // if(isset($_SESSION["name"])) {
+        //     $name = $_SESSION["name"];
+        // }
 
         function checkPhone($val) {
             $pattern = '#^(03|05|07|08|09)[0-9]{8}$#';
@@ -63,7 +61,7 @@ $display = [
         $phoneValid = $addValid = $nameValid = false;
         if($_SERVER["REQUEST_METHOD"] === "POST") {
             $phone = $_POST["phone_number"];
-            $nameCustomer = $_POST["name"];
+            
             $addr = $_POST["address"];
             $message = $_POST["message"];
             foreach($_POST as $key => $value) {
@@ -72,12 +70,12 @@ $display = [
                 }
             }
 
-            if(checkPhone($phone)) {
-                //header('location:http://localhost/baitapthunhat/bill.php');
-                $phoneValid = true;
-            } else {
-                $phoneErr = "Số điện thoại không hợp lệ!";
-            }
+            // if(checkPhone($phone)) {
+            //     //header('location:http://localhost/baitapthunhat/bill.php');
+            //     $phoneValid = true;
+            // } else {
+            //     $phoneErr = "Số điện thoại không hợp lệ!";
+            // }
 
             if(checkAddress($addr)) {
             
@@ -86,14 +84,14 @@ $display = [
                 $addressErr = "Địa chỉ không hợp lệ!";
             }
 
-            if(checkName($nameCustomer)) {
+            // if(checkName($nameCustomer)) {
                 
-                $nameValid = true;
-            } else {
-                $nameErr = "Tên không hợp lệ!";
-            }
+            //     $nameValid = true;
+            // } else {
+            //     $nameErr = "Tên không hợp lệ!";
+            // }
 
-            if ($phoneValid == true && $addValid == true && $nameValid == true) {
+            if ($addValid == true) {
                 
                 foreach($display as $key => $value) {
                     $_SESSION["info_customer"][$key] = htmlspecialchars($value);
@@ -107,21 +105,13 @@ $display = [
 
     <div class="container-info">
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST"> 
-        <div class="item">
-            <div>Họ và tên:</div>
-            <input type="text" name="name" value="<?php echo $name; ?>">
-            <span><?php echo $nameErr;?></span>
-        </div>
+        
 
-        <div class="item">
-            <div>Số điện thoại:</div>
-            <input type="text" name="phone_number">
-            <span><?php echo $phoneErr;?></span>
-        </div>
+        
 
         <div class="item">
             <div>Địa chỉ giao hàng:</div>
-            <input type="text" name="address">  
+            <textarea type="text" rows="4" cols="50" name="address"></textarea>  
             <span><?php echo $addressErr;?></span>
         </div>
 
@@ -143,15 +133,19 @@ $display = [
             while ($row = mysqli_fetch_array($res)) {
                 ?>
             <div class="detailed-item"> 
-                <img src="anhnen1.jpg" alt="">
+                <img src="<?php echo $row["product_image"] ?>" alt="">
                 <div class="price-and-quantity">
                     <p><?php echo $row["name_product"] ?></p>
-                    <p>Đơn giá: <?php echo $row["price"]; ?> X <?php echo $_SESSION["display_quantity"][$row["id_product"]];?></p>
+                    <p>Đơn giá: <?php echo $row["price"]; ?> X <?php echo $_SESSION["display_quantity"][$row["id_product"]]["quantity"];?></p>
             </div>        
         </div>
         <?php
             }
         }
+        // echo "<pre>";
+        //     print_r($_SESSION);
+        // echo "</pre>";
+        //session_destroy();
         ?>
         <div class="item">
             <div>Tổng tiền: <?php echo number_format($_SESSION["total"]); ?> VNĐ</div>
@@ -163,4 +157,3 @@ $display = [
     </div>
 </body>
 </html>
-

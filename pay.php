@@ -74,25 +74,31 @@
         $res = mysqli_query($conn, $sql);
         $row = mysqli_fetch_array($res);
         if(!isset($_SESSION["display_quantity"][$row['id_product']])) {
-            $_SESSION["display_quantity"][$row['id_product']] = 1;
+            $_SESSION["display_quantity"][$row['id_product']]["quantity"] = 1;
+            $_SESSION["display_quantity"][$row['id_product']]["product_name"] = $row["name_product"];
+            $_SESSION["display_quantity"][$row['id_product']]["price"] = $row["price"];
         }
 ?>    
         <div class="bill">
-            <div class="image"><img src="<?php echo $row["product_image"]; ?>" alt=""></div>
+            <div class="image">
+            <?php
+                echo '<img src="'.$row['product_image'].'"/>';
+            ?>  
+            </div>
             <div class="content">
                 <p><?php echo $row["name_product"]; ?></p>
                 <span>
                     Số lượng: 
-                   <a href="#"><i class="fas fa-minus" onclick="minus(<?php echo $row['id_product']; ?>)"></i></a>
+                   <i class="fas fa-minus" onclick="minus(<?php echo $row['id_product']; ?>)"></i>
                 <!--Input-->
                     <input name="" 
-                    onkeyup="onlyPositiveNum(<?php echo $row['id_product']; ?>)" 
+                    onkeyup="onlyPositiveNum(<?php echo $row['id_product']; ?>, this.value)" 
                     id="<?php echo $row['id_product']; ?>"
                      type="text"
-                    value="<?php echo $_SESSION["display_quantity"][$row['id_product']]; ?>"
+                    value="<?php echo $_SESSION["display_quantity"][$row['id_product']]["quantity"]; ?>"
                     >
                 <!--Input-->
-                   <a href="#"><i onclick="plus(<?php echo $row['id_product']; ?>)" class="fas fa-plus"></i></a>
+                   <i onclick="plus(<?php echo $row['id_product']; ?>)" class="fas fa-plus"></i>
                 </span>
                 <p class="price-product">
                     Đơn giá: <?php echo number_format($row["price"]); ?> VNĐ
@@ -139,7 +145,7 @@
         </div>
     </div>
 
-    <script src="js/pay.js"></script>
+    <script src="pay.js"></script>
 
     
 
@@ -148,6 +154,12 @@
         // echo "<pre>";
         // print_r($_SESSION["id_product"]);
         // echo "</pre>";
+
+        echo "<pre>";
+                 print_r($_SESSION);
+                 echo "</pre>";
+            
+        
     ?>
 </body>
 </html>

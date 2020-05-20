@@ -1,0 +1,77 @@
+* {box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  
+}
+
+/* Set height of body and the document to 100% */
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial;
+  background-color: #b3b300;
+}
+
+.container {
+  margin-top: 99px;
+}
+
+@media (max-width: 858px) {
+  .container {
+    margin-top: 50px;
+  }
+}
+/* Style tab links */
+.tablink {
+  background-color: #555;
+  color: white;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 17px;
+  width: 50%;
+}
+
+.tablink:hover {
+  background-color: #777;
+}
+
+/* Style the tab content (and add height:100% for full page content) */
+.tabcontent {
+  color: white;
+  display: none;
+  padding: 100px 20px;
+  height: 100%;
+}
+input, textarea {
+  background-color: #ebebe0;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  margin-top: .5rem;
+  padding: .5rem;
+}
+input {
+  width: 13rem;
+  height: 1.7rem;
+}
+#personal-info, #status-order {
+  background-color: #b3b300;
+  text-align: center;
+  
+  font-size: 1.2rem;
+}
+
+.addr {
+  background-color: #999900;
+  border: none;
+  outline: none;
+  padding: 1rem;
+  cursor: pointer;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+}

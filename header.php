@@ -1,9 +1,9 @@
-    
+<link href='https://fonts.googleapis.com/css?family=Cookie' rel='stylesheet'>
     <link rel="stylesheet" href="header.css">
     <!--Header-->
     <header>
         
-        <span>LOGO</span>
+        <div class="logo">VàngMã</div>
         
 
         <input type="checkbox" id="check">
@@ -12,13 +12,13 @@
 
     <div class="header1">
         <!--Form-->
-        <form action="" id="search">
-            <input type="text" id="search" placeholder="Bạn muốn mua gì?">
-            <button>Tìm kiếm</button>
+        <form action="home.php" autocomplete="off" id="search" method="GET">
+            <input type="search" name="searchProduct" id="search" placeholder="Bạn muốn mua gì?">
+            <button>Tìm kiếm</button>            
         </form>
-
+    
         <div class="navlink">
-            <a href="">Trang chủ</a>
+            <a href="home.php">Trang chủ</a>
             <a href="">Chủ đề</a>
             <a href="">Ưu đãi</a>
             <a href="">Xem bói</a>
@@ -28,15 +28,15 @@
     </div>
 
        <?php
-            if(isset($_SESSION["phone_number"])) {
+            if(isset($_SESSION['info_customer']["phone_number"]) && isset($_SESSION['info_customer']["level"])) {
                 echo '<ul>
-                <li><a href="" class="customer">'.$_SESSION["name"].'</a></li>
+                <li><a href="personalPage.php" class="customer">'.$_SESSION['info_customer']["name"].'</a></li>
                 
                     </ul>';
             } else {
                 echo '<ul>
-                <li><a href="" class="aaa">Đăng nhập</a></li>
-                <li><a href="">Đăng ký</a></li> 
+                <li><a href="login.php" class="aaa">Đăng nhập</a></li>
+                <li><a href="signup.php">Đăng ký</a></li> 
                     </ul>';
             }
        ?>

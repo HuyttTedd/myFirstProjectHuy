@@ -1,0 +1,9 @@
+body {
+    background-color: #b3b300;
+}
+.container {
+    background-color: #ffff66;
+    margin: 10rem auto;
+    text-align: center;
+    border-radius: 20px;
+}
