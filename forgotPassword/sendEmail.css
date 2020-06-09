@@ -1,0 +1,10 @@
+#btn {
+    cursor: pointer;
+    padding: 1rem;
+    
+}
+
+#confirm, #form-ajax{
+    display: none;
+}
+

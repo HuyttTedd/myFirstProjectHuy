@@ -1,0 +1,41 @@
+body {
+    background-color: #666600;
+}
+
+.container {
+    max-width: 400px;
+    background-color: #ffff99;
+    padding: 3rem;
+    text-align: center;
+    margin: 10% auto;
+    border-radius: 10px;
+}
+
+.container .item {
+    padding: .5rem;
+}
+
+.container .item input {
+    width: 12rem;
+    height: 1.2rem;
+    
+}
+
+.container .item button {
+    padding: .5rem;
+    background-color: #666600;
+    color: whitesmoke;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+.container .item button:hover {
+    background-color: #b3b300;
+}
+
+.error {
+    color: red;
+    font-style: italic;
+}
+

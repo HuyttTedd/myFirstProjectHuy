@@ -82,43 +82,66 @@ session_start();
                 <span></span></a>
             </div>
             -->
-
+<!--URL-->
+<?php
+$url = 'home.php';
+    if(isset($_REQUEST["val"])&&isset($_REQUEST["page"])){
+        $url = 'home.php?val='.$_REQUEST["val"].'&page='.$_REQUEST["page"].'' ;
+    } else if(isset($_REQUEST["searchProduct"]) && isset($_REQUEST["page"])) {
+        $url = 'home.php?val='.$_REQUEST["searchProduct"].'&page='.$_REQUEST["page"].'' ;
+    }
+    
+?>
             </div>
             <div class="arrange">
-                <select name="arrange" id="arrange">
-                    <option value="Sắp xếp" selected>Sắp xếp</option>
-                    <option value="1">Sắp xếp theo giá tăng dần</option>
-                    <option value="0">Sắp xếp theo giá giảm dần</option>
-                </select>
+                <span>Sắp xếp <i class="fas fa-chevron-down"></i></span>
+                <div class="dropdown">
+                
+                        <form action="<?php echo $url;?>" method="POST">
+                            <input type="hidden" name="arrange" value="ASC">
+                            <button type="submit">Sắp xếp theo giá tăng dần</button>
+                        </form>
+                        <form action="<?php echo $url;?>" method="POST">
+                            <input type="hidden" name="arrange" value="DESC">
+                            <button type="submit">Sắp xếp theo giá giảm dần</button>
+                        </form>
+
+                </div>
             </div>
+
             <div class="product">
 
-                <?php
-
-                if (isset($_REQUEST['val']) && isset($_REQUEST["page"])) {
-                    $val_id = $_REQUEST["val"];
-                    $page = $_REQUEST["page"];
-                    
+    <?php
+        if (isset($_REQUEST['val']) && isset($_REQUEST["page"])) {
+            $val_id = $_REQUEST["val"];
+            $page = $_REQUEST["page"];
+            if (is_numeric($page) && $page > 0) {
                     //số bài giới hạn của 1 trang
                     $limit = 10;
                     $offset = ($page-1)*$limit;
+
                     include("connect.php");
-                    $sql_display_product = "SELECT * FROM products where id_type_product = $val_id limit $offset, $limit";
+            if (isset($_POST["arrange"])) {
+                $arrange = $_POST["arrange"];
+                $sql_display_product = "SELECT * FROM products where id_type_product = $val_id ORDER BY price $arrange limit '$offset', '$limit'";
+                
+            } else {
+                $sql_display_product = "SELECT * FROM products where id_type_product = $val_id limit $offset, $limit";
+
+            }
                     $resProduct = mysqli_query($conn, $sql_display_product);
-                                        //đếm số record của sản phẩm
+                    //đếm số record của sản phẩm
                     $sql_count = "SELECT * FROM products where id_type_product = $val_id";
                     $resCount = mysqli_query($conn, $sql_count);
-                                        $count = mysqli_num_rows($resCount);
-                    
-                                        //tính số page
-                                        $total_page = ceil($count / $limit);
-                    while ($data1 = mysqli_fetch_array($resProduct)) {
-                ?>
+                    $count = mysqli_num_rows($resCount);
+                    //tính số page
+                    $total_page = ceil($count / $limit);
+            while ($data1 = mysqli_fetch_array($resProduct)) {
+    ?>
                         <div class="product-item">
-                            <a href="detailed-product.php?id_product=<?php echo $data1['id_product']; ?>">
+                            <a href="detailed-product.php?id_product=<?php echo $data1['id_product']; ?>" >
                                 <?php
-                                echo '<img src="'.$data1['product_image'].'"/>';
-                                ?>
+                                echo '<img src="'.$data1['product_image'].'"/>'; ?>
                                 <!--Limit word < 45-->
                                 <p><?php echo $data1["name_product"]; ?></p>
                                 <span><?php echo number_format($data1["price"]); ?> VNĐ</span>
@@ -131,27 +154,39 @@ session_start();
                                 </button>
                             </div>
                         </div>
-                <?php
+    <?php
                     }
-                    echo '<div class="container-paginate">';
-                    for($i = 1; $i <= $total_page; $i++) {
-                        echo '<a href="home.php?val='.$val_id.'&page='.$i.'" class="paginate">'.$i.'</a>';
-                        
-                    }
-                    echo '</div>';
-                   
+                    
                 }
-                ?>
+                }
+    ?>
 
-                <!--display product from search bar-->
-                <?php
+                <!--Hiển thị sản phẩm từ thanh tìm kiếm-->
+    <?php
                 if (isset($_GET["searchProduct"])) {
-                    $search = $_GET["searchProduct"];
+                    $search = trim($_GET["searchProduct"]);
+                    
                     include "connect.php";
-                    $sqlSearch = "SELECT * FROM products where name_product like '%$search%'";
+
+                    $limit = 10;
+                    if(!isset($_REQUEST["page"])) {
+                        $page = 1;
+                    } else {
+                        $page = $_REQUEST["page"];
+                    }
+                    $offset = ($page-1)*$limit;
+                    
+
+                    $sqlSearch = "SELECT * FROM products where name_product like '%$search%' limit $offset, $limit";
+                    $sql_count = "SELECT * FROM products where name_product like '%$search%'";
+                    $resCount = mysqli_query($conn, $sql_count);
+                    $count =mysqli_num_rows($resCount);
+
+                    $total_page = ceil($count / $limit);
+                    
                     $resSearch = mysqli_query($conn, $sqlSearch);
                     while ($rowSearch = mysqli_fetch_array($resSearch)) {
-                ?>
+    ?>
                     <div class="product-item">
                             <a href="detailed-product.php?id_product=<?php echo $rowSearch['id_product']; ?>">
                                 <?php
@@ -168,11 +203,12 @@ session_start();
                                     </div>
                                 </button>
                             </div>
-                        </div>
-                <?php
+                    </div>
+    <?php
                     }
+                    
                 }
-                ?>
+    ?>
                 <!--TEST PRODUCT-->
                 <!--hightlight Product if dont request-->
     <!--            <div class="hightlight">
@@ -212,11 +248,30 @@ session_start();
                         ?>
 
                     </div>
+                    <?php
+                if(isset($_REQUEST["searchProduct"])) {
+                    echo '<div class="container-paginate">';
+                    for ($i = 1; $i <= $total_page; $i++) {
+                        echo '<a href="home.php?searchProduct='.$search.'&page='.$i.'" class="paginate">'.$i.'</a>';
+                    }
+                    echo '</div>';
+                } else if(isset($_REQUEST["val"])) {
+                    echo '<div class="container-paginate">';
+                    for ($i = 1; $i <= $total_page; $i++) {
+                        echo '<a href="home.php?val='.$val_id.'&page='.$i.'" class="paginate">'.$i.'</a>';
+                    }
+                    echo '</div>';
+                } 
+                    ?>
                     <!--display-->
                 </div>
             </div>
         </div>
-
+    <?php 
+        if(!isset($_REQUEST["val"]) && !isset($_REQUEST["searchProduct"])) {
+            include("home1.php");
+        }
+    ?>
         <!--Giỏ hàng-->
         <div id="my-cart">
             <a href="pay.php">

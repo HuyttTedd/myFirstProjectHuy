@@ -1,0 +1,33 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    max-width: 500px;
+}
+.popup {
+    display: none;
+    position: fixed;
+    background-color: #ffff80;
+    padding: .7rem;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    border-radius: 10px;
+}
+
+.popup button {
+    width: 5rem;
+    margin: .5rem;
+    padding: .5rem;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background-color: #666600;
+    color: white;
+    border-radius: 5px;
+}
+
+.popup button:hover {
+    background-color: #b3b300;
+}

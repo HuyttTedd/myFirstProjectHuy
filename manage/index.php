@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Đăng nhập ADMIN Shop Vàng Mã</title>
     <style>
         body {
             background: #b3b300;

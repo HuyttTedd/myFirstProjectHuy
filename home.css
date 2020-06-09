@@ -445,7 +445,7 @@ header ul li a:hover {
     text-decoration: none;
 }
 .content .category .item div {
-    background-color: #808000;
+    background-color: #b3b300;
     width: 100%;
     height: 3.9rem;
     border-radius: 5px;
@@ -461,7 +461,7 @@ header ul li a:hover {
     top: 30%;
     font-size: 1rem;
     word-break: break-word;
-    color: white;
+    color: black;
 }
 /*****************************************************************************************************************/
 /*PRODUCT*/
@@ -475,7 +475,7 @@ header ul li a:hover {
 } 
 .content .product .product-item {
     width: 19%;
-    background-color: #ffb610;
+    background-color: #cccc00;
     text-align: center;
     margin: 0.5%;
     border-radius: 8px;
@@ -552,14 +552,13 @@ header ul li a:hover {
     bottom: 1rem;
     right: 1rem;
     font-size: 3rem;
-    background-color: #ffff80;
+    background-color: #808000;
     padding: 1rem;
     border-radius: 50%;
-   
 }
 
 #my-cart a i {
-    color: #b3b300;
+    color: white;
 }
 
 #my-cart p {
@@ -568,8 +567,9 @@ header ul li a:hover {
     right: 0;
     padding: 0 .5rem;
     font-size: 1.5rem;
-    background-color: #ffb610;
+    background-color: #e6e600;
     border-radius: 50%;
+    color: #808000;
 }
 .container-paginate {
     text-align: center;
@@ -589,14 +589,51 @@ header ul li a:hover {
     color: #4d4d00;
 }
 
-.arrange #arrange {
-    float: right;
-    margin: 1rem 4%;
-    font-size: 1rem;
-    padding: .5rem;
+
+.arrange span {
+    background-color: #808000;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    
+}
+.arrange {
+    position: relative;
+    display: inline-block;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    margin-left: 3%;
+
+}
+
+.arrange .dropdown {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    margin-top: .5rem;
+}
+
+.arrange .dropdown button {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
     border: none;
     outline: none;
-    background-color: #999900;
-    border-radius: 3px;
+}
+.arrange .dropdown button:hover {
+    background-color: #808000;
     color: white;
 }
+
+.arrange:hover .dropdown {
+    display: block;
+    background-color: white;
+}
+

@@ -1,6 +1,5 @@
 <?php
-// Start the session
-session_start();
+    session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,6 +12,9 @@ session_start();
 </head>
 <body>
 <?php
+if(isset($_SESSION['info_customer']["phone_number"])) {
+    header('location:http://localhost/baitapthunhat/home.php');
+}
         //Pattern 
         include("pattern.php");
         // function checkPhone($val) {
@@ -189,6 +191,10 @@ session_start();
         <button class="btn2"><a href="login.php">Đăng nhập ngay!</a></button>
 
     </div>
+
+    <?php
+        include("footer.php");
+    ?>
 </body>
 </html>
 

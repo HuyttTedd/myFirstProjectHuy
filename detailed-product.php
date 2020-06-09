@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    
     <link rel="stylesheet" href="detailed-product.css">
     <link href="fontawesome/css/fontawesome.css" rel="stylesheet">
     <link href="fontawesome/css/brands.css" rel="stylesheet">
@@ -23,14 +23,18 @@
         include("connect.php");
         $sql1 = "SELECT * FROM products where id_product = $id1";
         $resProduct = mysqli_query($conn, $sql1);
-        while ($row = mysqli_fetch_array($resProduct)) {
-            $id2 = $row["id_product"];
-            $img = $row["product_image"];
-            $name = $row["name_product"];
-            $price = $row["price"];
-            $description = $row["description"];
-            $type = $row["id_type_product"];
-        
+        //bug URL
+        if(mysqli_num_rows($resProduct) < 1) {
+            header('location:http://localhost/baitapthunhat/home.php');
+        } else {
+            while ($row = mysqli_fetch_array($resProduct)) {
+                $id2 = $row["id_product"];
+                $img = $row["product_image"];
+                $name = $row["name_product"];
+                $price = $row["price"];
+                $description = $row["description"];
+                $type = $row["id_type_product"];
+            }
         }
         $i = 0;
         
@@ -42,7 +46,7 @@
             $i++;
         }
 ?>
-    
+    <title><?php echo $name; ?> - Vàng Mã</title>
 
  <div class="container-detail">
 

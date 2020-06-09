@@ -4,11 +4,15 @@
     box-sizing: border-box;
 }
 
+body {
+    background-color: #ffff80;
+}
+
 .container {
     position: relative;
     max-width: 370px;
     height: 100vh;
-    background: #fff4c1;
+    background: #999900;
     text-align: center;
     margin: 0 auto;
     margin-top: 0.1rem;
@@ -18,7 +22,7 @@
 .container .logo {
     font-size: 3rem;
     padding: 1rem;
-    background: #fff4c1;
+    background: #999900;
     border-top-right-radius: 7px;
     border-top-left-radius: 7px;
 }
@@ -27,7 +31,8 @@
     font-size: 1.5rem;
     padding: 1rem;
     font-family: Arial, Helvetica, serif;
-    color: brown;
+    color: white;
+    
     
 }
 
@@ -36,9 +41,9 @@
 .container form i {
     
     padding: 10px;
-    color: white;
+    color: #999900;
     
-    background: dodgerblue;
+    background: #ffff80;
     height: 39px;
 }
 
@@ -54,7 +59,7 @@
 }
 
 .container form input:focus {
-    border: 2px solid dodgerblue;
+    border: 2px solid #ffff80;
 }
 
 .container form .info { 
@@ -68,7 +73,7 @@
 #btn1 {
     width: 55%;
     margin: 0 5%;
-    background: dodgerblue;
+    background: #ffff80;
     margin-bottom: 10px;
     opacity: 0.9;
     cursor: pointer;
@@ -82,15 +87,15 @@
 
 .container .choice {
     width: 100%; 
-    border-bottom: 1px solid gray; 
-    line-height: 1px;
+    border-bottom: 1px solid white; 
+    line-height: 2px;
     margin: 10px 0 20px; 
  } 
 
 .container .choice .choice1 { 
-    background:#fff4c1; 
+    background:#999900; 
     padding:0 7px; 
-    color: black;
+    color: white;
     font-size: 1rem;
 }
 
@@ -98,7 +103,7 @@
     width: 55%;
     padding: 10px;
     margin: 0 5%;
-    background: dodgerblue;
+    background: #ffff80;
     margin-bottom: 10px;
     opacity: 0.9;
     cursor: pointer;

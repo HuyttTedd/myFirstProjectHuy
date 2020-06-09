@@ -14,7 +14,7 @@
         padding: 0;
     }
     .normal-admin{
-        background: #b3b300;
+        background: #ffffcc;
         padding: 2rem;
     }
     .normal-admin .item {
@@ -35,7 +35,7 @@
     }
 
     .super-admin{
-        background: #b3b300;
+        background: #ffffcc;
         padding: 2rem;
     }
     .super-admin .item {
@@ -118,10 +118,13 @@
     -->
     <h3>Khách hàng</h3>
     <div class='item'>
-    <a href="deleteProduct.php">Sửa thông tin khách hàng</a>
+    <a href="customer.php">Xem thông tin tất cả khách hàng</a>
     </div>
     <div class='item'>
-    <a href="deleteProduct.php">Xóa tài khoản khách hàng</a>
+    <a href="updateCustomer.php">Sửa thông tin khách hàng</a>
+    </div>
+    <div class='item'>
+    <a href="deleteCustomer.php">Xóa tài khoản khách hàng</a>
     </div>
 </div>
 <hr>

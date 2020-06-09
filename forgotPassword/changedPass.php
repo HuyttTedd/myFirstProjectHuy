@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,8 +9,10 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Tôi chưa đủ khả năng làm trang này!</h1>
-    <h1>Bạn quên mật khẩu tức là bạn đã mất tài khoản!</h1>
-    <h1>Xin cảm ơn!</h1>
+    <?php
+        
+    ?>
+    <h1>Đã thay đổi mật khẩu thành công!</h1>
+    <p><a href="http://localhost/baitapthunhat/home.php">Quay về trang chủ</a></p>
 </body>
 </html>

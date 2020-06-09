@@ -14,7 +14,7 @@
         <div class="contact">
             <h3 class="title">THÔNG TIN LIÊN HỆ</h3>
             
-            <p><i class="fas fa-map-marker-alt"></i> Thanh Trì, Hà Nội</p>
+            <p><i class="fas fa-map-marker-alt"></i>Hà Nội</p>
             <p><i class="fas fa-phone"></i> 0965582327</p>
             <p><i class="fas fa-envelope"></i> abcxyz@gmail.com</p>
             <p><i class="fas fa-briefcase"></i> 24/24h các ngày trong tuần</p>

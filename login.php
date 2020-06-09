@@ -7,7 +7,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đăng nhập</title>
+    <title>Shop Vàng Mã Đăng Nhập</title>
     <link rel="stylesheet" href="login.css">
     <script src="https://kit.fontawesome.com/f1e0b185be.js" crossorigin="anonymous"></script>
 
@@ -24,6 +24,10 @@ session_start();
         //     die("Connection failed: " . mysqli_connect_error());
         // }
         //print
+        //kiểm tra nếu đăng nhập chưa:
+        if(isset($_SESSION['info_customer']["phone_number"])) {
+            header('location:http://localhost/baitapthunhat/home.php');
+        }
         $display = [
             "phone" => "",
             "pass" => ""
@@ -41,14 +45,7 @@ session_start();
                     $display[$key] = htmlspecialchars($value);
                 }
             }
-            // $servername = "localhost";
-            // $username = "root";
-            // $password = "";
-            // $dbname = "myshop";
-            // $conn = new mysqli($servername, $username, $password, $dbname);
-            // if (!$conn) {
-            //     die("Connection failed: " . mysqli_connect_error());
-            // }
+
 
             $sql = "SELECT * FROM tbl_account WHERE phone_number = '$phone' AND pass = '$pass'";
             $res = mysqli_query($conn, $sql);
@@ -88,7 +85,7 @@ session_start();
         
 
         <button class="btn2"><a href="sign-up.php">Đăng ký ngay!</a></button>
-        <div class="forgot"><a href="#">Quên mật khẩu?</a></div>
+        <div class="forgot"><a href="forgotPassword/forgotPass.php">Quên mật khẩu?</a></div>
     </div>
     <?php
         include("footer.php");
