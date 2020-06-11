@@ -41,9 +41,10 @@ if ($res) {
     }
 ?>
 
+
     <h1>Xóa sản phẩm</h1>
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
-        Bạn có chắc muốn xóa?<br>
+        Bạn có chắc muốn xóa sản phẩm có <?php echo $product_id; ?>?<br>
         <input type="hidden" name="id" value="<?php echo $product_id; ?>">
         <input type="submit" value="Xác nhận xóa!">
     </form>

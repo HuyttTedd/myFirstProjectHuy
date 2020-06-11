@@ -19,9 +19,6 @@
     
         <div class="navlink">
             <a href="home.php">Trang chủ</a>
-            <a href="">Chủ đề</a>
-            <a href="">Ưu đãi</a>
-            <a href="">Xem bói</a>
         </div>
 
         

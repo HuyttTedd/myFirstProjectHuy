@@ -81,7 +81,7 @@
     <div class="popup" id="popup">
         <div class="popup-content">
             <p>Bạn có chắc muốn dùng địa chỉ Email này</p>
-            <p id="email-in-popup"></p>
+            <p id="email-in-popup" style="font-size: 1.2rem;"></p>
             <button id="accept-form">Đồng ý</button>
             <button id="cancel-form">Thay đổi</button>
         </div>

@@ -14,7 +14,9 @@
             header('location:http://localhost/baitapthunhat/manage/index.php');
         }
 ?>
-
+    <div>
+        <a style="text-decoration: none; color: red" href="admin.php">Trở về trang chủ</a>
+    </div>
 <?php
     $flag = "";
     $phone_update = "";

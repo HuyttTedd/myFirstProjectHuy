@@ -53,9 +53,9 @@ th, td {
             <td>
                 <?php 
                     if($row["level"] == 1) {
-                        echo "ADMIN";
-                    } else if($row["level"] == 0) {
                         echo "SUPER ADMIN";
+                    } else if($row["level"] == 0) {
+                        echo "ADMIN";
                     }
                 ?>
             </td>

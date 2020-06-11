@@ -73,9 +73,21 @@ $phone = $_SESSION["forgotPassword"]["phone"];
             <span><?php echo $error2; ?></span>
         </div>
         <div class="item">
-            <input type="submit" name="submit" value="Xác nhận">
+            <input type="submit" id="submit-form" name="submit" value="Xác nhận">
         </div>
-        
+
     </form>
+
+    <button id="display-popup">Xác nhận</button>
+    </div>
+
+    <!--POPUP-->
+
+    <?php
+        echo "<pre>";
+        print_r($_SESSION);
+        echo "</pre>";
+    ?>
+
 </body>
 </html>

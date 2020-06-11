@@ -136,7 +136,7 @@ $display = [
                 <img src="<?php echo $row["product_image"] ?>" alt="">
                 <div class="price-and-quantity">
                     <p><?php echo $row["name_product"] ?></p>
-                    <p>Đơn giá: <?php echo $row["price"]; ?> X <?php echo $_SESSION["display_quantity"][$row["id_product"]]["quantity"];?></p>
+                    <p>Đơn giá: <?php echo number_format($row["price"]); ?> X <?php echo $_SESSION["display_quantity"][$row["id_product"]]["quantity"];?></p>
             </div>        
         </div>
         <?php
