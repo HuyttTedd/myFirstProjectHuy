@@ -290,8 +290,10 @@ if (isset($_SESSION["id_product"])) {
         <!--JS__________________---------------------------------------------------------->
         <script src="js/a.js"></script>
 
-
-        <script>
+<?php
+    if(isset($_SESSION['info_customer']["phone_number"])) {
+echo '
+    <script>
             function addToCart(str) {
                 var xmlhttp = new XMLHttpRequest();
                 xmlhttp.onreadystatechange = function() {
@@ -302,10 +304,42 @@ if (isset($_SESSION["id_product"])) {
                 xmlhttp.open("GET", "cart.php?id=" + str, true);
                 xmlhttp.send();
             }
-        </script>
+    </script>';
+
+
+    } else {
+    echo '
+        <script>
+                function addToCart(str) {
+                    var xmlhttp = new XMLHttpRequest();
+                    xmlhttp.onreadystatechange = function() {
+                        if (this.readyState == 4 && this.status == 200) {
+                                document.getElementById("count-product").innerHTML = this.responseText;
+                            }
+                    };
+                    xmlhttp.open("GET", "require-login.php?q=" + str, true);
+                    xmlhttp.send();
+                }
+        </script>';
+    }
+?>
+
 
 <script>
-            function exitPopup2() {
+    function requireLogin() {
+        document.getElementById("require-login").style.display = "none";
+    }
+
+    function popUpSignIn() {
+        window.location.href = "http://localhost/baitapthunhat/login.php";
+    }
+
+    function popUpSignUp() {
+        window.location.href = "http://localhost/baitapthunhat/sign-up.php";
+    }
+
+
+    function exitPopup2() {
             var popup = document.getElementById("popup");
             window.onclick = function(event) {
             if (event.target == popup) {
@@ -319,7 +353,7 @@ if (isset($_SESSION["id_product"])) {
     }
 </script>
 
-        <?php
+<?php
 //session_destroy();
 //$conn->close();
 ?>
@@ -328,9 +362,9 @@ if (isset($_SESSION["id_product"])) {
         <?php
 include "footer.php";
 
-// echo "<pre>";
-// print_r($_SESSION);
-// echo "</pre>";
+echo "<pre>";
+print_r($_SESSION);
+echo "</pre>";
 
 ?>
 </body>

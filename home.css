@@ -663,8 +663,8 @@ popup
 
 .popup-content button {
     width: 5rem;
-    margin: .9rem;
-    padding: .5rem;
+    margin: .5rem;
+    padding: .4rem;
     cursor: pointer;
     border: none;
     outline: none;

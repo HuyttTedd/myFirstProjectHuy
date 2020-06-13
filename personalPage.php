@@ -20,6 +20,7 @@
 ?>
 
 <?php
+$phone = $_SESSION["info_customer"]["phone_number"];
   include("header.php");
 ?>
 
@@ -37,21 +38,21 @@
             }
     }
     $flag = "";
-    if(isset($_POST["address"])) {
-      include("connect.php");
-      $add = $_POST["address"];
-      if(checkAddress($add)) {
-        $sqlAddr = "INSERT into tbl_account(address) values '$add'";
-        if(mysqli_query($conn, $sqlAddr)) {
-          $flag = "Sửa địa chỉ của bạn thành công!";
-        } else {
-          $flag = "Có lỗi gì đó thử lại sau!";
-        }
-      } else {
-        $flag = "Địa chỉ không hợp lệ!";
-      }
-    mysqli_close($conn);
-    }
+    // if(isset($_POST["address"])) {
+    //   include("connect.php");
+    //   $add = $_POST["address"];
+    //   if(checkAddress($add)) {
+    //     $sqlAddr = "UPDATE tbl_account(address) values '$add'";
+    //     if(mysqli_query($conn, $sqlAddr)) {
+    //       $flag = "Sửa địa chỉ của bạn thành công!";
+    //     } else {
+    //       $flag = "Có lỗi gì đó thử lại sau!";
+    //     }
+    //   } else {
+    //     $flag = "Địa chỉ không hợp lệ!";
+    //   }
+    // mysqli_close($conn);
+    // }
 
 ?>
 
@@ -69,9 +70,105 @@
   <div class="notify" style="color: red"><?php echo $flag;?></div>
 </div>
 
+<!--Đơn hàng-->
 <div id="status-order" class="tabcontent">
-  <h3>News</h3>
-  <p>Some news this fine day!</p> 
+      <button class="tab-status" onclick="openStatus('solving',this,'#999900')" id="defaultStatus">Đơn hàng đang xử lý</button>
+      <button class="tab-status" onclick="openStatus('solved',this,'#999900')">Đơn hàng đã nhận</button>
+      <button class="tab-status" onclick="openStatus('cancel',this,'#999900')">Đơn hàng đã hủy</button>
+
+      <?php
+      //Chưa xử lý: 0
+    //Đang giao: 1
+    //Đã xử lý: 2
+    //Đã hủy: 3
+      include("connect.php");
+      ?>
+      
+      <div class="status-content" id="solving">
+      
+  
+<?php
+          $bill_solving = "SELECT * from bill where status = 1 or status = 0 and customer_phone = '$phone'";
+          $res_bill_solving = mysqli_query($conn, $bill_solving);
+          while($row1 = mysqli_fetch_array($res_bill_solving)) {
+?>
+  <table>
+    <caption>Mã hóa đơn: <?php echo $row1["bill_id"]; ?>. Tổng tiền: <?php echo number_format($row1["total"]); ?> VNĐ</caption>
+<?php
+            $bill_solving_detailed = "SELECT * from billdetailed where bill_id = '$row1[bill_id]'";
+            $res_bill_solving_detailed = mysqli_query($conn, $bill_solving_detailed);
+            while($row2 = mysqli_fetch_array($res_bill_solving_detailed)) {
+?>
+    <tr>
+      <td>Tên sản phẩm: <?php echo $row2["product_name"] ?></td>
+      <td>Đơn giá: <?php echo $row2["product_price"] ?></td>
+      <td>Số lượng: <?php echo $row2["product_quantity"] ?></td>
+    </tr>
+<?php
+            }
+?>
+  </table>
+<?php
+          }
+        ?>
+      </div>
+
+<!--Đơn hàng đã xử lý--->
+      <div class="status-content" id="solved">
+      <?php
+          $bill_solving = "SELECT * from bill where status = 2 and customer_phone = '$phone'";
+          $res_bill_solving = mysqli_query($conn, $bill_solving);
+          while($row1 = mysqli_fetch_array($res_bill_solving)) {
+?>
+  <table>
+    <caption>Mã hóa đơn: <?php echo $row1["bill_id"]; ?>. Tổng tiền: <?php echo number_format($row1["total"]); ?> VNĐ</caption>
+<?php
+            $bill_solving_detailed = "SELECT * from billdetailed where bill_id = '$row1[bill_id]'";
+            $res_bill_solving_detailed = mysqli_query($conn, $bill_solving_detailed);
+            while($row2 = mysqli_fetch_array($res_bill_solving_detailed)) {
+?>
+    <tr>
+      <td>Tên sản phẩm: <?php echo $row2["product_name"] ?></td>
+      <td>Đơn giá: <?php echo $row2["product_price"] ?></td>
+      <td>Số lượng: <?php echo $row2["product_quantity"] ?></td>
+    </tr>
+<?php
+            }
+?>
+  </table>
+<?php
+          }
+        ?>
+      </div>
+
+
+      <div class="status-content" id="cancel">
+      <?php
+          $bill_solving = "SELECT * from bill where status = 3 and customer_phone = '$phone'";
+          $res_bill_solving = mysqli_query($conn, $bill_solving);
+          while($row1 = mysqli_fetch_array($res_bill_solving)) {
+?>
+  <table>
+    <caption>Mã hóa đơn: <?php echo $row1["bill_id"]; ?>. Tổng tiền: <?php echo number_format($row1["total"]); ?> VNĐ</caption>
+<?php
+            $bill_solving_detailed = "SELECT * from billdetailed where bill_id = '$row1[bill_id]'";
+            $res_bill_solving_detailed = mysqli_query($conn, $bill_solving_detailed);
+            while($row2 = mysqli_fetch_array($res_bill_solving_detailed)) {
+?>
+    <tr>
+      <td>Tên sản phẩm: <?php echo $row2["product_name"] ?></td>
+      <td>Đơn giá: <?php echo $row2["product_price"] ?></td>
+      <td>Số lượng: <?php echo $row2["product_quantity"] ?></td>
+    </tr>
+<?php
+            }
+?>
+  </table>
+<?php
+          }
+        ?>
+      </div>
+
 </div>
 </div>
 <script>
@@ -89,8 +186,23 @@ function openPage(pageName,elmnt,color) {
   elmnt.style.backgroundColor = color;
 }
 
+function openStatus(pageName,elmnt,color) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("status-content");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tab-status");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].style.backgroundColor = "";
+  }
+  document.getElementById(pageName).style.display = "block";
+  elmnt.style.backgroundColor = color;
+}
+
 // Get the element with id="defaultOpen" and click on it
 document.getElementById("defaultOpen").click();
+document.getElementById("defaultStatus").click();
 </script>
 </body>
 </html>

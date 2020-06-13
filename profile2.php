@@ -22,7 +22,6 @@
 
 <div class="container-profile">
         <div class="bill-item">
-            <p class="red">Đơn hàng sẽ được xử lý sớm nhất cho quý khách!</p>
             <p>Mã đơn hàng đã đặt:<?php echo $randomStr; ?></p>
     <?php
 

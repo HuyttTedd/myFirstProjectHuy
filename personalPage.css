@@ -42,7 +42,7 @@ body, html {
 .tabcontent {
   color: white;
   display: none;
-  padding: 100px 20px;
+  padding: 80px 20px;
   height: 100%;
 }
 input, textarea {
@@ -58,7 +58,7 @@ input {
   width: 13rem;
   height: 1.7rem;
 }
-#personal-info, #status-order {
+#personal-info {
   background-color: #b3b300;
   text-align: center;
   
@@ -74,4 +74,37 @@ input {
   border-radius: 8px;
   font-size: 1rem;
   font-weight: bold;
+}
+
+.tab-status {
+  float: left;
+  width: 33.33%;
+  padding: .6rem 0;
+  cursor: pointer;
+  height: 3rem;
+  outline: none;
+  border: none;
+}
+
+.tab-status:hover {
+  background-color: #999900;
+  color: white;
+}
+
+.status-content {
+  display: none;
+}
+
+table {
+  margin-top: 80px;
+  
+}
+table caption {
+  background-color: #ffffcc;
+  color: red;
+}
+td {
+  border: 1px solid black;
+  padding: 1rem;
+  background-color: #4d4d00;
 }

@@ -15,6 +15,9 @@
 </head>
 <body>
     <?php
+    if (!isset($_SESSION['info_customer']["phone_number"])) {
+        header('location:http://localhost/baitapthunhat/home.php');
+    }
         include("header.php");
     ?>
     <!--chuyển hướng từ trang chi tiết sản phẩm-->
