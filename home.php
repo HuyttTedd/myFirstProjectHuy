@@ -140,7 +140,15 @@ if (isset($_REQUEST['val']) && isset($_REQUEST["page"])) {
         while ($data1 = mysqli_fetch_array($resProduct)) {
             ?>
                         <div class="product-item">
-                            <a href="detailed-product.php?id_product=<?php echo $data1['id_product']; ?>" >
+                            <a 
+                            <?php
+                                if(!isset($_SESSION['info_customer']["phone_number"])) {
+                                    echo 'href="javascript:void(0)"';
+                                } else {
+                                    echo 'href="detailed-product.php?id_product='.$data1['id_product'].'"';
+                                }
+                            ?>
+                            >
                                 <?php
 echo '<img src="' . $data1['product_image'] . '"/>'; ?>
                                 <!--Limit word < 45-->
@@ -188,7 +196,15 @@ if (isset($_GET["searchProduct"])) {
     while ($rowSearch = mysqli_fetch_array($resSearch)) {
         ?>
                     <div class="product-item">
-                            <a href="detailed-product.php?id_product=<?php echo $rowSearch['id_product']; ?>">
+                            <a 
+                            <?php
+                                if(!isset($_SESSION['info_customer']["phone_number"])) {
+                                    echo 'href="javascript:void(0)"';
+                                } else {
+                                    echo 'href="detailed-product.php?id_product='.$rowSearch['id_product'].'"';
+                                }
+                            ?>
+                            >
                                 <?php
 echo '<img src="' . $rowSearch['product_image'] . '"/>';
         ?>
@@ -247,7 +263,7 @@ echo '<img src="' . $rowSearch['product_image'] . '"/>';
 //}
 ?>
 
-                    </div>
+</div>
                     <?php
 if (isset($_REQUEST["searchProduct"])) {
     echo '<div class="container-paginate">';
@@ -304,6 +320,9 @@ echo '
                 xmlhttp.open("GET", "cart.php?id=" + str, true);
                 xmlhttp.send();
             }
+
+
+
     </script>';
 
 
@@ -320,8 +339,12 @@ echo '
                     xmlhttp.open("GET", "require-login.php?q=" + str, true);
                     xmlhttp.send();
                 }
+
+                
         </script>';
     }
+
+
 ?>
 
 
@@ -329,6 +352,7 @@ echo '
     function requireLogin() {
         document.getElementById("require-login").style.display = "none";
     }
+
 
     function popUpSignIn() {
         window.location.href = "http://localhost/baitapthunhat/login.php";

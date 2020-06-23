@@ -25,9 +25,10 @@
     </div>
 
        <?php
-            if(isset($_SESSION['info_customer']["phone_number"]) && isset($_SESSION['info_customer']["level"])) {
+            if(isset($_SESSION['info_customer']["phone_number"])) {
                 echo '<ul>
                 <li><a href="personalPage.php" class="customer">'.$_SESSION['info_customer']["name"].'</a></li>
+                <li><a href="logout.php" class="customer">Đăng xuất</a></li>
                 
                     </ul>';
             } else {

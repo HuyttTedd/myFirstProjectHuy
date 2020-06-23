@@ -14,6 +14,9 @@
 </head>
 <body>
     <?php
+    if($_SESSION["info_customer"]["sent"] != true) {
+        header('location:http://localhost/baitapthunhat/pay.php');
+    }
     include("header.php");
         $randomStr = $_SESSION["bill_id"];
         include("connect.php");
@@ -55,6 +58,22 @@
 
             <p class="red">Tổng tiền: <?php echo number_format($_SESSION["total"]); ?> VNĐ</p>
         </div>
+        <div class="redirect">
+            <a href="home.php">Mua hàng tiếp</a>
+            <a href="personalPage.php">Xem tình trang đơn hàng trong trang cá nhân</a>
+        </div>
     </div>
+    <?php
+        //session_unset()
+        echo "<pre>";
+        print_r($_SESSION);
+        echo "</pre>";
+        unset($_SESSION["total"]);
+        unset($_SESSION["bill_id"]);
+        unset($_SESSION["count_money"]);
+        unset($_SESSION["display_quantity"]);
+        unset($_SESSION["id_product"]);
+        unset($_SESSION["info_customer"]["sent"]);
+    ?>
 </body>
 </html>

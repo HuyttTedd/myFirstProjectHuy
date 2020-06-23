@@ -14,6 +14,9 @@
 </head>
 <body>
 <?php
+if(!isset($_SESSION["total"]) || empty($_SESSION["id_product"])) {
+    header('location:http://localhost/baitapthunhat/pay.php');
+}
     include("header.php");
 ?>
     <?php
@@ -96,6 +99,7 @@ $display = [
                 foreach($display as $key => $value) {
                     $_SESSION["info_customer"][$key] = htmlspecialchars($value);
                 }
+                $_SESSION["info_customer"]["sent"] = true;
                 header('location:http://localhost/baitapthunhat/profile.php');
             } 
 

@@ -33,6 +33,10 @@ session_start();
             "pass" => ""
         ];
         //request
+        //LÀM TRY CATCH//////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //LÀM TRY CATCH//////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //LÀM TRY CATCH//////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //LÀM TRY CATCH//////////////////////////////////////////////////////////////////////////////////////////////////////////
         $phoneErr = $passErr = "";
         include('connect.php');
         if($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -46,15 +50,20 @@ session_start();
                 }
             }
 
-
-            $sql = "SELECT * FROM tbl_account WHERE phone_number = '$phone' AND pass = '$pass'";
-            $res = mysqli_query($conn, $sql);
-            $data = mysqli_fetch_array($res);
-            if(mysqli_num_rows($res) > 0) {
-                $_SESSION['info_customer']["phone_number"] = $data["phone_number"];
+            
+            
+            $sql = $conn->prepare("SELECT name,phone_number,pass FROM tbl_account WHERE phone_number =? AND pass =? limit 1");
+            $sql->bind_param('ss', $phone, $pass);
+            $sql->execute();
+            $res = $sql->get_result();
+            if($res->num_rows == 1) {
+                // $sql2 = "SELECT * from tbl_account where phone_number='$phone'";
+                // $res = mysqli_query($conn, $sql2);
+                // $data = mysqli_fetch_array($res);
+                $data = $res->fetch_array();
+                $_SESSION['info_customer']["phone_number"] = $phone;
                 $_SESSION['info_customer']["name"] = $data["name"];
-                $_SESSION['info_customer']["id_customer"] = $data["id"];
-                $_SESSION['info_customer']["level"] = $data["level"];
+                $sql->close();
 
                 header('location:http://localhost/baitapthunhat/home.php');
 

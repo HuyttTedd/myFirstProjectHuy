@@ -1,7 +1,12 @@
 <link rel="stylesheet" href="home1.css">
 
 <?php
-    include("connect.php");
+        include("connect.php");
+?>
+
+
+
+<?php
     $sql = "SELECT * from product_type";
     $res = mysqli_query($conn, $sql);
     while($row = mysqli_fetch_array($res)) {
@@ -19,7 +24,15 @@
 ?>
 
             <div class="item-hl">
-                <a href="detailed-product.php?id_product=<?php echo $row1["id_product"]; ?>">
+                <a
+                <?php
+                        if(!isset($_SESSION['info_customer']["phone_number"])) {
+                            echo 'href="javascript:void(0)"';
+                        } else {
+                            echo 'href="detailed-product.php?id_product='.$row1['id_product'].'"';
+                                }
+                ?>
+                >
                     <img src="<?php echo $row1["product_image"]; ?>" alt="">
                 </a>
             </div>
