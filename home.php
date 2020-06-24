@@ -21,6 +21,11 @@ session_start();
     <!--Header-->
     <?php
 include "header.php";
+
+if(!isset($_SESSION['info_customer']["phone_number"])) {
+    include "invite.php";
+}
+
 //MAKE search bar
 //  if (isset($_GET["searchProduct"])) {
 //     $search = $_GET["searchProduct"];
@@ -38,19 +43,27 @@ include "header.php";
             <div class="carousel">
                 <div class="leftArrow" onclick="plusSlides(-1)"><i class="fa fa-arrow-left"></i></div>
                 <div class="rightArrow" onclick="plusSlides(1)"><i class="fa fa-arrow-right"></i></div>
-
+<!--
                 <div class="imageHolder">
                     <img src="assets/cake.jpeg" alt="">
                 </div>
+-->
+            <?php
+            include "connect.php";
+                $hl_img = "SELECT * from image_hightlight where position > 0 order by position ASC limit 20";
+                
+                if($res = mysqli_query($conn, $hl_img)) {
+                    while($row = mysqli_fetch_array($res)) {
+            ?>
                 <div class="imageHolder">
-                    <img src="assets/panda5.jpg" alt="">
+                    <img src="<?php echo $row["link_image_hl"] ?>" alt="">
                 </div>
-                <div class="imageHolder">
-                    <img src="assets/panda4.jpg" alt="">
-                </div>
-                <div class="imageHolder">
-                    <img src="assets/panda.jpg" alt="">
-                </div>
+            <?php
+                    }
+                }
+            ?>
+  
+                
             </div>
 
             <div id="dotsContainer">
@@ -100,11 +113,11 @@ if (isset($_REQUEST["val"]) && isset($_REQUEST["page"])) {
 
                         <form action="<?php echo $url; ?>" method="POST">
                             <input type="hidden" name="arrange" value="ASC">
-                            <button type="submit">Sắp xếp theo giá tăng dần</button>
+                            <button type="submit" disabled>Sắp xếp theo giá tăng dần</button>
                         </form>
                         <form action="<?php echo $url; ?>" method="POST">
                             <input type="hidden" name="arrange" value="DESC">
-                            <button type="submit">Sắp xếp theo giá giảm dần</button>
+                            <button type="submit" disabled>Sắp xếp theo giá giảm dần</button>
                         </form>
 
                 </div>
@@ -290,7 +303,15 @@ if (!isset($_REQUEST["val"]) && !isset($_REQUEST["searchProduct"])) {
 ?>
         <!--Giỏ hàng-->
         <div id="my-cart">
-            <a href="pay.php">
+            <a
+            <?php
+                                if(!isset($_SESSION['info_customer']["phone_number"])) {
+                                    echo 'onclick="addToCart(1)"';
+                                } else {
+                                    echo 'href="pay.php"';
+                                }
+            ?>
+            >
                 <i class="fas fa-shopping-cart"></i>
             </a>
             <p id="count-product">
@@ -386,9 +407,9 @@ echo '
         <?php
 include "footer.php";
 
-echo "<pre>";
-print_r($_SESSION);
-echo "</pre>";
+// echo "<pre>";
+// print_r($_SESSION);
+// echo "</pre>";
 
 ?>
 </body>

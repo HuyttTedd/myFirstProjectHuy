@@ -14,9 +14,12 @@
 <?php
 if(isset($_SESSION['info_customer']["phone_number"])) {
     header('location:http://localhost/baitapthunhat/home.php');
+
 }
         //Pattern 
         include("pattern.php");
+        include("header.php");
+
         // function checkPhone($val) {
         //     $pattern = '#^(03|05|07|08|09)[0-9]{8}$#';
         //     if(preg_match($pattern, $val)) {
@@ -135,13 +138,14 @@ if(isset($_SESSION['info_customer']["phone_number"])) {
 
             if($validName == true && $validPhone == true && $validPass == true && $validPass2 == true) {
                 //Insert
-                $sqlIns = "INSERT INTO tbl_account (level, name, phone_number, pass) VALUES (0, '$name', '$phone', '$pass')";
-                $ress = mysqli_query($conn, $sqlIns);
-                if ($ress === true) {
+                $sqlIns = $conn->prepare("INSERT INTO tbl_account (level, name, phone_number, pass) VALUES (0, ?, ?, ?)");
+                $sqlIns->bind_param('sss', $name, $phone, $pass);
+
+                if ($sqlIns->execute()) {
                     
                     header('location:http://localhost/baitapthunhat/welcome.php');
                 } else {
-                    echo "Error: " ."<br>" . $conn->error;
+                    $passErr2 = "Có lỗi xảy ra, vui lòng thử lại sau!";
                 }
                 
                 
@@ -152,7 +156,7 @@ if(isset($_SESSION['info_customer']["phone_number"])) {
 
     ?>
     <div class="container">
-        <div class="logo">LOGO</div>
+        <!--<div class="logo">LOGO</div>-->
         <p class="login">Đăng ký tài khoản</p>
 
 

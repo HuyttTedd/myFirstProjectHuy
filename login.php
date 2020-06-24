@@ -14,6 +14,7 @@ session_start();
 </head>
 <body>
     <?php
+    include("header.php");
         //sql
         // $servername = "localhost";
         // $username = "root";
@@ -74,8 +75,11 @@ session_start();
     ?>
 
     <div class="container">
+        <!--
+        
         <div class="logo">LOGO</div>
-        <p class="login">Đăng nhập</p>
+    -->
+        <p class="login">ĐĂNG NHẬP</p>
             
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST"> 
         <div class="info">
@@ -85,7 +89,7 @@ session_start();
         <span class="error"><?php echo $phoneErr; ?></span>
         <div class="info">
             <i class="fas fa-unlock-alt"></i>
-            <input type="password" placeholder="Password" name="pass" value="<?php echo $display["pass"];?>">
+            <input type="password" placeholder="Mật khẩu" name="pass" value="<?php echo $display["pass"];?>">
         </div>
         <span class="error"><?php echo $passErr; ?></span>
             <input type="submit" name="" id="btn1" value="Đăng nhập ngay!">

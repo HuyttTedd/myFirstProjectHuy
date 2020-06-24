@@ -54,30 +54,40 @@
             include("connect2.php");
             $phone = $_POST["phone"];
             $pass = $_POST["pass"];
-            $sql = "SELECT * from admin where admin_phone_number = '$phone' and password = '$pass'";
-            $res = mysqli_query($conn, $sql);
-            $row = mysqli_fetch_array($res);
-            if(mysqli_num_rows($res) == 1) {
-                $_SESSION["admin_info"]["admin_name"] = $row["admin_name"]; 
-                $_SESSION["admin_info"]["admin_level"] = $row["level"];
-                $_SESSION["admin_info"]["admin_phone"] = $row["admin_phone_number"];
-                header('location:http://localhost/baitapthunhat/manage/admin.php');
-            } else {
-                $err = "Tài khoản hoặc mật khẩu không chính xác!";
+            
+            $sql = $conn->prepare("SELECT * from admin where admin_phone_number = ? and password = ?");
+            $sql->bind_param('ss', $phone, $pass);
+            if($sql->execute()){
+                $res = $sql->get_result();
+                if($res->num_rows == 1) {
+                    $row = $res->fetch_array();
+                    $_SESSION["admin_info"]["admin_name"] = $row["admin_name"]; 
+                    $_SESSION["admin_info"]["admin_level"] = $row["level"];
+                    $_SESSION["admin_info"]["admin_phone"] = $row["admin_phone_number"];
+                    header('location:http://localhost/baitapthunhat/manage/admin.php');
+                } else {
+                    $err = "Tài khoản hoặc mật khẩu không chính xác!";
+                }
             }
+
+             
         }
     ?>
 
     <div class="container">
         <h1>ĐĂNG NHẬP</h1>
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" autocomplete="off" method="POST">
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"  method="POST">
             <div>Số điện thoại ADMIN:</div>
-            <input type="text" name="phone">
+            <input type="text" name="phone" value="<?php if(isset($_POST["phone"])) { echo $_POST["phone"]; }  ?>">
             <div>Mật khẩu:</div>
-            <input type="password" name="pass">
-            <div style="color: red"><?php echo $err; ?></div>
+            <input type="password" name="pass" value="<?php if(isset($_POST["pass"])) { echo $_POST["pass"]; }  ?>">
+            <div style="color: #cc0000"><?php echo $err; ?></div>
             <button>Đăng nhập</button>
         </form>
     </div>
+
+    <?php
+       // print_r($_SESSION);
+    ?>
 </body>
 </html>

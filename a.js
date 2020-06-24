@@ -53,7 +53,7 @@ function moveSlide(n) {
 }
 
 function setTime() {
-    setInterval(function() {plusSlides(1); }, 7000);
+    setInterval(function() {plusSlides(1); }, 1000);
 }
 
 setTime();

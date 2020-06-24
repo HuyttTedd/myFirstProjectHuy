@@ -252,7 +252,7 @@ header ul li a:hover {
     position: relative;
     width: 50%;
     height: 21em;
-    background: black;
+    background: white;
     margin: 0 auto; 
     overflow: hidden;
     border-radius: 2px;
@@ -303,13 +303,13 @@ header ul li a:hover {
 
 .first-part #dotsContainer .dots {
     display: inline-block;
-    width: 18px;
-    height: 18px;
+    width: 10px;
+    height: 10px;
     background: black;
     border-radius: 50%;
     cursor: pointer;
     transition: black .5s;
-    margin: 0 10px;
+    margin: 0 3px;
 }
 /*****************************************************************************************************************/
 /*MEDIA FOR CAROUSEL */
@@ -555,6 +555,7 @@ popup
     background-color: #808000;
     padding: 1rem;
     border-radius: 50%;
+    cursor: pointer;
 }
 
 #my-cart a i {

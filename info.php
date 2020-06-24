@@ -41,7 +41,7 @@ $display = [
         }
 
         function checkName($val) {
-            $pattern = '#^.{1,30}$#';
+            $pattern = '#^.{1,40}$#';
             if(preg_match($pattern, $val)) {
                 return true;
             } else {
@@ -64,7 +64,9 @@ $display = [
         $phoneValid = $addValid = $nameValid = false;
         if($_SERVER["REQUEST_METHOD"] === "POST") {
             $phone = $_POST["phone_number"];
-            
+            $phone = trim($phone);
+            $name = $_POST["name"];
+            $name = trim($name);
             $addr = $_POST["address"];
             $message = $_POST["message"];
             foreach($_POST as $key => $value) {
@@ -73,12 +75,12 @@ $display = [
                 }
             }
 
-            // if(checkPhone($phone)) {
-            //     //header('location:http://localhost/baitapthunhat/bill.php');
-            //     $phoneValid = true;
-            // } else {
-            //     $phoneErr = "Số điện thoại không hợp lệ!";
-            // }
+            if(checkPhone($phone)) {
+                //header('location:http://localhost/baitapthunhat/bill.php');
+                $phoneValid = true;
+            } else {
+                $phoneErr = "Số điện thoại không hợp lệ!";
+            }
 
             if(checkAddress($addr)) {
             
@@ -87,12 +89,12 @@ $display = [
                 $addressErr = "Địa chỉ không hợp lệ!";
             }
 
-            // if(checkName($nameCustomer)) {
+            if(checkName($name)) {
                 
-            //     $nameValid = true;
-            // } else {
-            //     $nameErr = "Tên không hợp lệ!";
-            // }
+                $nameValid = true;
+            } else {
+                $nameErr = "Tên không hợp lệ!";
+            }
 
             if ($addValid == true) {
                 
@@ -108,15 +110,38 @@ $display = [
     ?>
 
     <div class="container-info">
+    
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST"> 
-        
+        <div class="item">
+            <div>Tên người nhận:</div>
+            <input type="text" name="name" autocomplete="off" value="<?php
+            if(isset($_POST["name"])) {
+                echo $name;
+            } else {
+                echo trim($_SESSION["info_customer"]["name"]);
+            }
+            ?>
+            "> 
+            <span class="err"><?php echo $nameErr;?></span>
+        </div>
 
-        
+        <div class="item">
+            <div>Số điện thoại:</div>
+            <input type="text" name="phone" autocomplete="off" value="<?php
+            if(isset($_POST["phone"])) {
+                echo $phone;
+            } else {
+                echo trim($_SESSION["info_customer"]["phone_number"]);
+            }
+            ?>
+            "> 
+            <span class="err"><?php echo $phoneErr;?></span>
+        </div>
 
         <div class="item">
             <div>Địa chỉ giao hàng:</div>
             <textarea type="text" rows="4" cols="50" name="address"></textarea>  
-            <span><?php echo $addressErr;?></span>
+            <span class="err"><?php echo $addressErr;?></span>
         </div>
 
         <div class="item">

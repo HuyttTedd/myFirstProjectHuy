@@ -8,8 +8,8 @@ input {
 }
 
 body {
-    background: url(anhnen1.jpg) repeat;
-    background-size: cover;
+    background: #ffffcc;
+    
 }
 
 .container-info {
@@ -34,6 +34,7 @@ body {
 
 .container-info .item input,textarea {
     width: 100%;
+    padding: 5px 5px;
 }
 
 #submit-bill {
@@ -42,6 +43,16 @@ body {
     margin-left: 35%;
     margin-bottom: 2rem;
     margin-top: 1rem;
+    cursor: pointer;
+    background-color: #999900;
+    color: white;
+    outline: none;
+    border: none;
+}
+
+#submit-bill:hover {
+    background-color: #ffffcc;
+    color: black;
 }
 
 #price-bill {
@@ -88,4 +99,20 @@ body {
     .container-info .item, .container-info .detailed-item {
         width: 95%;
     }
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.err {
+    color: red;
 }

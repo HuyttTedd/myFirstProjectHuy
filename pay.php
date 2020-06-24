@@ -193,9 +193,9 @@
         // print_r($_SESSION["id_product"]);
         // echo "</pre>";
     include("footer.php");
-        echo "<pre>";
-            print_r($_SESSION);
-        echo "</pre>";
+        // echo "<pre>";
+        //     print_r($_SESSION);
+        // echo "</pre>";
     ?>
 </body>
 </html>

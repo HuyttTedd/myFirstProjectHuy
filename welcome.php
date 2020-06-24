@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="welcome.css">
 </head>
 <body>
+<?php
+        include("header.php");
+    ?>
     <div class="container">
         <h1>Bạn đã đăng ký thành công!</h1>
         <h1>Đăng nhập để mua hàng <a href="login.php">Đăng nhập</a></h1>

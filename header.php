@@ -34,10 +34,12 @@
             } else {
                 echo '<ul>
                 <li><a href="login.php" class="aaa">Đăng nhập</a></li>
-                <li><a href="signup.php">Đăng ký</a></li> 
+                <li><a href="sign-up.php">Đăng ký</a></li> 
                     </ul>';
             }
        ?>
     
     </header>
+
+
 
