@@ -1,7 +1,7 @@
 <?php
         //Pattern 
         function checkPhone($val) {
-            $pattern = '#^(03|05|07|08|09)[0-9]{8}$#';
+            $pattern = '/^(03|05|07|08|09)[0-9]{8}$/';
             if(preg_match($pattern, $val)) {
                 return true;
             } else {
@@ -36,4 +36,6 @@
             }
 
         }
+
+        
     ?>

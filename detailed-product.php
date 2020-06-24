@@ -77,7 +77,7 @@
 
             <div id="buy">
             <p class="title-product"><?php echo $name;?></p>
-            <p class="price"><?php echo number_format($price);?> VNĐ</p>
+            <p class="price">Giá: <?php echo number_format($price);?> VNĐ</p>
             <form action="pay.php">
 
             <div class="box">
@@ -149,7 +149,7 @@
 <div class="content">
         <div class="product">           
 <?php
-        $sql3 = "SELECT * FROM products where id_type_product = $type";
+        $sql3 = "SELECT * FROM products where id_type_product = $type and id_product != $id1 limit 10";
         $resProduct = mysqli_query($conn, $sql3);
         while ($row2 = mysqli_fetch_array($resProduct)) {
 ?>

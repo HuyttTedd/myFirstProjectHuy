@@ -53,7 +53,7 @@ session_start();
 
             
             
-            $sql = $conn->prepare("SELECT name,phone_number,pass FROM tbl_account WHERE phone_number =? AND pass =? limit 1");
+            $sql = $conn->prepare("SELECT id,name,phone_number,pass FROM tbl_account WHERE phone_number =? AND pass =? limit 1");
             $sql->bind_param('ss', $phone, $pass);
             $sql->execute();
             $res = $sql->get_result();
@@ -64,6 +64,7 @@ session_start();
                 $data = $res->fetch_array();
                 $_SESSION['info_customer']["phone_number"] = $phone;
                 $_SESSION['info_customer']["name"] = $data["name"];
+                $_SESSION['info_customer']["id"] = $data["id"];
                 $sql->close();
 
                 header('location:http://localhost/baitapthunhat/home.php');

@@ -14,7 +14,7 @@ session_start();
 </head>
 <body>
     <?php
-if ($_SESSION["info_customer"]["sent"] != true) {
+if ($_SESSION["create_bill"]["confirm"] != 2) {
     header('location:http://localhost/baitapthunhat/pay.php');
 }
 include "header.php";
@@ -76,6 +76,8 @@ unset($_SESSION["count_money"]);
 unset($_SESSION["display_quantity"]);
 unset($_SESSION["id_product"]);
 unset($_SESSION["info_customer"]["sent"]);
+unset($_SESSION["create_bill"]);
+
 ?>
 </body>
 </html>

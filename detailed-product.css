@@ -7,7 +7,7 @@
 }
 
 body {
-    background-color: #dfcdbf;
+    background-color: #ffffcc;
 }
 .container-detail {
     margin-top: 110px;
@@ -27,8 +27,8 @@ body {
     grid-area: small-img;
     height: 21rem;
     overflow-y: scroll;
-    border: 1px solid #c38f54;
-    background: #f2d4b8;
+    border: 1px solid #b3b300;
+    background: #b3b300;
 }
 
 .detailed-product .small-img img {
@@ -43,7 +43,7 @@ body {
 
 .detailed-product .img-product img {
     width: 100%;
-    border: 1px solid #c38f54;
+    border: 1px solid #b3b300;
     word-break: break-all;
     height: 100%;
 }
@@ -53,7 +53,7 @@ body {
     word-break: break-all;
     padding: 1rem;
     border: 1px solid #c38f54;
-    background: #f2d4b8;
+    background: #b3b300;
 }
 
 .detailed-product .description-product img {
@@ -133,13 +133,14 @@ body {
 }
 
 #buy .price {
+    margin-top: 3rem;
     font-weight: bold;
     font-size: 1.7rem;
-    color: #c38f54;
+    color: red;
 }
 
 #buy .title-product {
-    color: black;
+    color: white;
     text-transform: uppercase;
     font-size: 1.5rem;
     font-weight: bold;
@@ -147,11 +148,12 @@ body {
 
 
 #buy .box {
-    margin-top: .6rem;
+    margin-top: 3rem;
     text-align: center;
 }
 #buy .box a {
-    background-color: #c38f54;
+    
+    background-color: #ffffcc;
     border: none;
     text-decoration: none;
     padding: .7rem 2rem;
@@ -206,11 +208,12 @@ body {
 .similar-product {
     margin: 2rem auto;
     width: 90%;
-    border: 1px solid green;
+    border: 1px solid #b3b300;
+    background-color: #b3b300;
 }
 
 .similar-product p {
-    color: red;
+    color: white;
     text-align: center;
     font-size: 1.5rem;
     text-align: center;
@@ -290,17 +293,18 @@ body {
 .content .product .product-item {
     width: 19%;
     
-    background-color: #ffb610;
+    background-color: #cccc00;
     text-align: center;
     margin: 0.5%;
 }    
 
 .content .product .product-item button{
-    background-color: gainsboro;
+    background-color: white;
     padding: .5rem .2rem;
     bottom: 0;
     margin-bottom: .5rem;
     border: none;
+    cursor: pointer;
 }
 
 .content .product .product-item a{
@@ -370,22 +374,23 @@ body {
     bottom: 1rem;
     right: 1rem;
     font-size: 3rem;
-    background-color: #effff4;
+    background-color: #808000;
     padding: 1rem;
     border-radius: 50%;
-   
+    cursor: pointer;
 }
 
 #my-cart a i {
-    color: #68db1b;
+    color: white;
 }
 
-#my-cart p {
+#my-cart #count-product {
     position: absolute;
     bottom: 0;
     right: 0;
     padding: 0 .5rem;
     font-size: 1.5rem;
-    background-color: #ffb610;
+    background-color: #e6e600;
     border-radius: 50%;
+    color: #808000;
 }

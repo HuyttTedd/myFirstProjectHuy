@@ -15,6 +15,9 @@
 <body>
     <?php
     //RANDOM
+    if($_SESSION["create_bill"]["confirm"] != 1) {
+        header('location:http://localhost/baitapthunhat/pay.php');
+    }
     function generateRandomString($length = 11) {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $charactersLength = strlen($characters);
@@ -29,27 +32,28 @@
     //DATABASE
         
         include("connect.php");
-        if(!isset($_SESSION["info_customer"]["id_customer"])) {
-            $_SESSION["info_customer"]["id_customer"] = "NONE";
-        }
-        if(empty($_SESSION["info_customer"]["message"])) {
-            $_SESSION["info_customer"]["message"] = "NONE";
+        // if(!isset($_SESSION["info_customer"]["id_customer"])) {
+        //     $_SESSION["info_customer"]["id_customer"] = "NONE";
+        // }
+        if(empty($_SESSION["create_bill"]["message"])) {
+            $_SESSION["create_bill"]["message"] = "NONE";
        }
-        $id = $_SESSION["info_customer"]["id_customer"];
-        $name_customer = $_SESSION["info_customer"]["name"];
-        $phone = $_SESSION["info_customer"]["phone_number"];
-        $addr = $_SESSION["info_customer"]["address"];
-        $mess = $_SESSION["info_customer"]["message"];
+        $id = $_SESSION["info_customer"]["id"];
+        $name_customer = $_SESSION["create_bill"]["name"];
+        $phone = $_SESSION["create_bill"]["phone_number"];
+        $addr = $_SESSION["create_bill"]["address"];
+        $mess = $_SESSION["create_bill"]["message"];
         $total = $_SESSION["total"];
         $valid1 = $valid2 = false;
-        $sql1 = "INSERT INTO bill(bill_id, customer_id, customer_name, customer_phone, customer_address, customer_message, total)  
-        VALUES ('$randomStr', '$id', '$name_customer', '$phone', '$addr', '$mess', '$total')";
-        
+        $sql1 = $conn->prepare("INSERT INTO bill(bill_id, customer_id, customer_name, customer_phone, customer_address, customer_message, total)  
+        VALUES (?, ?, ?, ?, ?, ?, ?)");
 
-            if ($conn->query($sql1) === TRUE) {
+        $sql1->bind_param('sssssss', $randomStr, $id, $name_customer, $phone, $addr, $mess, $total);
+
+            if ($sql1->execute()) {
                 $valid1 = true;
             } else {
-                echo "Error: " . $sql1 . "<br>" . $conn->error;
+                echo "Có lỗi xảy ra!";
                 $valid1 = false;
 
             }
@@ -57,10 +61,10 @@
                 $quan = $value["quantity"];
                 $namee = $value["product_name"];
                 $pricee = $value["price"];     
-                $sql2 = "INSERT INTO billdetailed(product_id, product_name, product_quantity, product_price, bill_id, total)  
-                VALUES ('$key', '$namee', '$quan', '$pricee', '$randomStr', '$total')";
-                
-                if ($conn->query($sql2) === TRUE) {
+                $sql2 = $conn->prepare("INSERT INTO billdetailed(product_id, product_name, product_quantity, product_price, bill_id, total)  
+                VALUES (?, ?, ?, ?, ?, ?)");
+                $sql2->bind_param('ssssss', $key, $namee, $quan, $pricee, $randomStr, $total);
+                if ($sql2->execute()) {
                     $valid2 = true;
                 } else {
                     echo "Error: " . $sql2 . "<br>" . $conn->error;
@@ -70,9 +74,10 @@
         }
 
         if ($valid1 == true && $valid2 == true) {
+            $_SESSION["create_bill"]["confirm"] = 2;
             header('location:http://localhost/baitapthunhat/profile2.php');
         } else {
-            echo "You have some ERORRS";
+            echo "Có lỗi xảy ra!";
         }
         //$sql2 = "INSERT into billdetailed(product_id, product_name, product_price, product_quantity, bill_id) 
         //values ()";
