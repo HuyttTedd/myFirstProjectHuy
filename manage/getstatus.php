@@ -4,7 +4,7 @@
     include("connect2.php");
     //response
     $val = $_REQUEST["val"];
-
+    $arr_statistic = [];
     if($val == 0) {
         
         $sqlFromBill = "SELECT * From bill where status = 0";
@@ -37,6 +37,17 @@
                 echo "<div style='color: red'><b>Đơn giá sản phẩm</b>: ".number_format($rowFromBilldetailed['product_price'])." VNĐ</div>";
                 echo "<div><b>Số lượng sản phẩm</b>: $rowFromBilldetailed[product_quantity]</div>";
                 echo "<hr>";
+                $_SESSION["statistic"][$rowFromBill['bill_id']][$rowFromBilldetailed['product_id']]["buy"] = $rowFromBilldetailed['product_quantity'];
+            }
+////////////////////so lieu thong ke
+            if(isset($_SESSION["statistic"])) {
+                foreach($_SESSION["statistic"][$rowFromBill['bill_id']] as $key => $value) {
+                $sqlProd = "SELECT quantity from products where id_product = '$key'";
+                $res = mysqli_query($conn, $sqlProd);
+                $row = mysqli_fetch_array($res);
+                $_SESSION["statistic"][$rowFromBill['bill_id']][$key]["origin"] = $row["quantity"];
+                $_SESSION["statistic"][$rowFromBill['bill_id']][$key]["rest"] = intval($row["quantity"]) - intval($value["buy"]);
+                }
             }
 ?>
             <form action="<?php echo htmlspecialchars("manageBills.php");?>" method="POST">
@@ -89,6 +100,16 @@ if($val == 1) {
                 echo "<div style='color: red'><b>Đơn giá sản phẩm</b>: ".number_format($rowFromBilldetailed['product_price'])." VNĐ</div>";
                 echo "<div><b>Số lượng sản phẩm</b>: $rowFromBilldetailed[product_quantity]</div>";
                 echo "<hr>";
+                $_SESSION["statistic2"][$rowFromBill['bill_id']][$rowFromBilldetailed['product_id']]["buy"] = $rowFromBilldetailed['product_quantity'];        
+            }
+            if(isset($_SESSION["statistic2"])) {
+                foreach($_SESSION["statistic2"][$rowFromBill['bill_id']] as $key => $value) {
+                $sqlProd = "SELECT quantity from products where id_product = '$key'";
+                $res = mysqli_query($conn, $sqlProd);
+                $row = mysqli_fetch_array($res);
+                $_SESSION["statistic2"][$rowFromBill['bill_id']][$key]["rest"] = $row["quantity"];
+                $_SESSION["statistic2"][$rowFromBill['bill_id']][$key]["origin"] = intval($row["quantity"]) + intval($value["buy"]);
+                }
             }
 ?>
             <form action="<?php echo htmlspecialchars("manageBills.php");?>" method="POST">
@@ -198,4 +219,5 @@ if($val == 3) {
 <?php
 //////////////////////////////////////close
 mysqli_close($conn);
+
 ?>

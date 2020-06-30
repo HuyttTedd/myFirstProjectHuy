@@ -77,7 +77,7 @@ unset($_SESSION["display_quantity"]);
 unset($_SESSION["id_product"]);
 unset($_SESSION["info_customer"]["sent"]);
 unset($_SESSION["create_bill"]);
-
+include "footer.php";
 ?>
 </body>
 </html>

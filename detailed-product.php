@@ -151,7 +151,7 @@
 <div class="content">
         <div class="product">           
 <?php
-        $sql3 = "SELECT * FROM products where id_type_product = $type and id_product != $id1 limit 10";
+        $sql3 = "SELECT * FROM products where id_type_product = $type and id_product != $id1 and quantity > 0 limit 10";
         $resProduct = mysqli_query($conn, $sql3);
         while ($row2 = mysqli_fetch_array($resProduct)) {
 ?>
@@ -161,8 +161,10 @@
                 echo '<img src="'.$row2['product_image'].'"/>';
                 ?>
                         <!--Limit word < 45-->
+
                         <p><?php echo $row2["name_product"]; ?></p>
-                        <span><?php echo number_format($row2["price"]); ?> VNĐ</span>                       
+                        <span><?php echo number_format($row2["price"]); ?> VNĐ</span>
+                                               
                 </a>
                 <div>
                 <button onclick="addToCart(<?php echo $row2['id_product']; ?>)">

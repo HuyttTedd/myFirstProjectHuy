@@ -91,7 +91,25 @@ VALUES ('$name', '$price', '$img', '$quantity', '$desc', '$type')";
         Số lượng có: <br>
         <input type="text" name="quantity"> <br>
         Mã loại sản phẩm: <br>
-        <input type="text" name="type"> <br>
+        <?php
+            include("connect2.php");
+            $sql69 = "SELECT * from product_type";
+            $ress = mysqli_query($conn, $sql69);
+
+?>
+<select name="type" id="">
+
+
+<?php
+    while ($roww = mysqli_fetch_array($ress)) {
+        ?>
+    <option value="<?php echo $roww["type_name"] ?>"><?php echo $roww["type_name"] ?></option>
+<?php
+    }
+?>
+
+
+</select>
         Mô tả: <br>
         <textarea name="description" id="" cols="30" rows="10"></textarea> <br>
         <input type="submit" value="submit" id="insert" name="insert">

@@ -137,15 +137,15 @@ if (isset($_REQUEST['val']) && isset($_REQUEST["page"])) {
         include "connect.php";
         if (isset($_POST["arrange"])) {
             $arrange = $_POST["arrange"];
-            $sql_display_product = "SELECT * FROM products where id_type_product = $val_id ORDER BY price $arrange limit '$offset', '$limit'";
+            $sql_display_product = "SELECT * FROM products where id_type_product = $val_id and quantity > 0 ORDER BY price $arrange limit '$offset', '$limit'";
 
         } else {
-            $sql_display_product = "SELECT * FROM products where id_type_product = $val_id limit $offset, $limit";
+            $sql_display_product = "SELECT * FROM products where id_type_product = $val_id and quantity > 0 limit $offset, $limit";
 
         }
         $resProduct = mysqli_query($conn, $sql_display_product);
         //đếm số record của sản phẩm
-        $sql_count = "SELECT * FROM products where id_type_product = $val_id";
+        $sql_count = "SELECT * FROM products where id_type_product = $val_id and quantity > 0";
         $resCount = mysqli_query($conn, $sql_count);
         $count = mysqli_num_rows($resCount);
         //tính số page
@@ -198,8 +198,8 @@ if (isset($_GET["searchProduct"])) {
     }
     $offset = ($page - 1) * $limit;
 
-    $sqlSearch = "SELECT * FROM products where name_product like '%$search%' limit $offset, $limit";
-    $sql_count = "SELECT * FROM products where name_product like '%$search%'";
+    $sqlSearch = "SELECT * FROM products where name_product like '%$search%' and quantity > 0 limit $offset, $limit";
+    $sql_count = "SELECT * FROM products where name_product like '%$search%' and quantity > 0";
     $resCount = mysqli_query($conn, $sql_count);
     $count = mysqli_num_rows($resCount);
 
