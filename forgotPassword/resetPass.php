@@ -78,7 +78,7 @@ $phone = $_SESSION["forgotPassword"]["phone"];
 
     </form>
 
-    <button id="display-popup">Xác nhận</button>
+    
     </div>
 
     <!--POPUP-->

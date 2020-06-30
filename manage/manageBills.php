@@ -28,7 +28,7 @@
     if(isset($_POST["submitOrder"])) {
         $submitOrder = $_POST["submitOrder"];
         include("connect2.php");
-        $sqlSubmit = "UPDATE bill SET status=1 where bill_id='$submitOrder'";
+        $sqlSubmit = "UPDATE bill SET status=1 where bill_id='$submitOrder' and status = 0";
         mysqli_query($conn, $sqlSubmit);
         mysqli_close($conn);
     }
@@ -37,7 +37,7 @@
     if(isset($_POST["completeOrder"])) {
         $completeOrder = $_POST["completeOrder"];
         include("connect2.php");
-        $sqlComplete = "UPDATE bill SET status=2 where bill_id='$completeOrder'";
+        $sqlComplete = "UPDATE bill SET status=2 where bill_id='$completeOrder' and status = 1";
         mysqli_query($conn, $sqlComplete);
         mysqli_close($conn);
     }
@@ -45,8 +45,16 @@
     if(isset($_POST["cancelOrder"])) {
         $cancelOrder = $_POST["cancelOrder"];
         include("connect2.php");
-        $sqlCancel = "UPDATE bill SET status=3 where bill_id='$cancelOrder'";
+        $sqlCancel = "UPDATE bill SET status=3 where bill_id='$cancelOrder' and status = 0";
         mysqli_query($conn, $sqlCancel);
+        mysqli_close($conn);
+    }
+
+    if(isset($_POST["cancelOrder1"])) {
+        $cancelOrder1 = $_POST["cancelOrder"];
+        include("connect2.php");
+        $sqlCancel1 = "UPDATE bill SET status=3 where bill_id='$cancelOrder1' and status = 1";
+        mysqli_query($conn, $sqlCancel1);
         mysqli_close($conn);
     }
 

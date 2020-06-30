@@ -84,11 +84,12 @@ input {
   height: 3rem;
   outline: none;
   border: none;
+  background-color: #999900;
 }
 
 .tab-status:hover {
-  background-color: #999900;
-  color: white;
+  background-color: white;
+  
 }
 
 .status-content {

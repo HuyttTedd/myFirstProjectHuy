@@ -72,9 +72,9 @@ $phone = $_SESSION["info_customer"]["phone_number"];
 
 <!--Đơn hàng-->
 <div id="status-order" class="tabcontent">
-      <button class="tab-status" onclick="openStatus('solving',this,'#999900')" id="defaultStatus">Đơn hàng đang xử lý</button>
-      <button class="tab-status" onclick="openStatus('solved',this,'#999900')">Đơn hàng đã nhận</button>
-      <button class="tab-status" onclick="openStatus('cancel',this,'#999900')">Đơn hàng đã hủy</button>
+      <button class="tab-status" onclick="openStatus('solving',this,'white')" id="defaultStatus">Đơn hàng đang xử lý</button>
+      <button class="tab-status" onclick="openStatus('solved',this,'white')">Đơn hàng đã nhận</button>
+      <button class="tab-status" onclick="openStatus('cancel',this,'white')">Đơn hàng đã hủy</button>
 
       <?php
       //Chưa xử lý: 0
@@ -204,5 +204,9 @@ function openStatus(pageName,elmnt,color) {
 document.getElementById("defaultOpen").click();
 document.getElementById("defaultStatus").click();
 </script>
+
+<noscript>
+  
+</noscript>
 </body>
 </html>

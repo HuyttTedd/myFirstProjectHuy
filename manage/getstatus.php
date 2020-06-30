@@ -47,7 +47,6 @@
                 <input type="hidden" value="<?php echo $rowFromBill['bill_id'];?>" name="cancelOrder">
                 <input type="submit" id="submit" value="Hủy đơn hàng">
             </form>
-  
             </div>
 <?php  
         }
@@ -97,7 +96,7 @@ if($val == 1) {
                 <input type="submit" id="submit" value="Đã giao xong hàng">
             </form>
             <form action="<?php echo htmlspecialchars("manageBills.php");?>" method="POST">
-                <input type="hidden" value="<?php echo $rowFromBill['bill_id'];?>" name="cancelOrder">
+                <input type="hidden" value="<?php echo $rowFromBill['bill_id'];?>" name="cancelOrder1">
                 <input type="submit" id="submit" value="Không giao được đơn hàng">
             </form>
   

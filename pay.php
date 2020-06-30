@@ -95,7 +95,7 @@
                    <i class="fas fa-minus" onclick="minus(<?php echo $row['id_product']; ?>)"></i>
                 <!--Input-->
                     <input name="" 
-                    onkeyup="onlyPositiveNum(<?php echo $row['id_product']; ?>, this.value)" 
+                    onkeyup="onlyPositiveNum(<?php echo $row['id_product']; ?>, this.value, <?php echo $row['quantity']; ?>)" 
                     id="<?php echo $row['id_product']; ?>"
                      type="number"
                     value="<?php echo $_SESSION["display_quantity"][$row['id_product']]["quantity"]; ?>"
@@ -106,6 +106,7 @@
                 <p class="price-product">
                     Đơn giá: <?php echo number_format($row["price"]); ?> VNĐ
                 </p>
+                <p style="font-size: .8rem; color: white">Số lượng: <?php echo $row['quantity']; ?></p>
                 <form action="pay.php" method="post">
                     <input type="text" id="delete-item" name="delete-item" value="<?php echo $row['id_product']; ?>" >
                     <input type="submit" value="Xóa sản phẩm" class="submit-delete-item-real">

@@ -38,6 +38,7 @@
                 $price = $row["price"];
                 $description = $row["description"];
                 $type = $row["id_type_product"];
+                $quan = $row["quantity"];
             }
         }
         $i = 0;
@@ -78,6 +79,7 @@
             <div id="buy">
             <p class="title-product"><?php echo $name;?></p>
             <p class="price">Giá: <?php echo number_format($price);?> VNĐ</p>
+            <p class="quan">Số lượng: <?php echo $quan;?></p>
             <form action="pay.php">
 
             <div class="box">

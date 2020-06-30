@@ -27,13 +27,13 @@ body {
     grid-area: small-img;
     height: 21rem;
     overflow-y: scroll;
-    border: 1px solid #b3b300;
+    border: 1px solid white;
     background: #b3b300;
 }
 
 .detailed-product .small-img img {
     width: 100%;
-    
+    border: 1px solid white;
     height: 4rem;
 }
 .detailed-product .img-product{
@@ -43,7 +43,7 @@ body {
 
 .detailed-product .img-product img {
     width: 100%;
-    border: 1px solid #b3b300;
+    border: 1px solid white;
     word-break: break-all;
     height: 100%;
 }
@@ -393,4 +393,8 @@ body {
     background-color: #e6e600;
     border-radius: 50%;
     color: #808000;
+}
+
+.quan {
+    color: white;
 }

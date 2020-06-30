@@ -97,7 +97,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 
     if ($addValid == true && $phoneValid == true && $nameValid == true) {
-
+        
         
         $_SESSION["create_bill"]["phone_number"] = $phone;
         $_SESSION["create_bill"]["name"] = $name;
@@ -174,9 +174,9 @@ foreach ($pay as $key => $value) {
         <?php
 }
 }
-echo "<pre>";
-    print_r($_SESSION);
-echo "</pre>";
+// echo "<pre>";
+//     print_r($_SESSION);
+// echo "</pre>";
 //session_destroy();
 
 

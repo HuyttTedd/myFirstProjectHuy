@@ -1,4 +1,4 @@
-function onlyPositiveNum(str, val) {
+function onlyPositiveNum(str, val, quantity) {
     var i = document.getElementById(str);
     var patt = /\./;
     if(isNaN(i.value)) {
@@ -38,6 +38,19 @@ function onlyPositiveNum(str, val) {
     xmlhttp.open("GET", "ajax-sum.php?id=" + str + "&quantity=1", true);
     xmlhttp.send();
     }
+
+    else if(i.value > quantity) {
+        i.value = quantity;
+        var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("sum-price").innerHTML = this.responseText;
+        }
+    };
+    xmlhttp.open("GET", "ajax-sum.php?id=" + str + "&quantity=" + quantity, true);
+    xmlhttp.send();
+    }
+
     else if(i.value > 999) {
         i.value = 999;
         var xmlhttp = new XMLHttpRequest();

@@ -67,9 +67,9 @@ $sql4 = "SELECT * from products where id_product = '$idToPrint'";
     </div>
     <?php
 //session_unset()
-echo "<pre>";
-print_r($_SESSION);
-echo "</pre>";
+// echo "<pre>";
+// print_r($_SESSION);
+// echo "</pre>";
 unset($_SESSION["total"]);
 unset($_SESSION["bill_id"]);
 unset($_SESSION["count_money"]);
