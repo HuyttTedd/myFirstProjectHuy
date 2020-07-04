@@ -10,11 +10,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shop Vàng Mã</title>
     <link rel="stylesheet" href="home.css">
-
-    <link href="fontawesome/css/fontawesome.css" rel="stylesheet">
-    <link href="fontawesome/css/brands.css" rel="stylesheet">
-    <link href="fontawesome/css/solid.css" rel="stylesheet">
-
+    <script src="https://kit.fontawesome.com/63a257a1cd.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -61,6 +57,7 @@ if(!isset($_SESSION['info_customer']["phone_number"])) {
             <?php
                     }
                 }
+                mysqli_close($conn);
             ?>
   
                 
@@ -75,7 +72,7 @@ if(!isset($_SESSION['info_customer']["phone_number"])) {
             <div class="category">
                 <?php
 include "connect.php";
-$sqlCategory = "SELECT * FROM product_type";
+$sqlCategory = "SELECT * FROM product_type where status=0";
 $resCategory = mysqli_query($conn, $sqlCategory);
 while ($dataCategory = mysqli_fetch_array($resCategory)) {
     ?>
@@ -137,10 +134,10 @@ if (isset($_REQUEST['val']) && isset($_REQUEST["page"])) {
         include "connect.php";
         if (isset($_POST["arrange"])) {
             $arrange = $_POST["arrange"];
-            $sql_display_product = "SELECT * FROM products where id_type_product = $val_id and quantity > 0 ORDER BY price $arrange limit '$offset', '$limit'";
+            $sql_display_product = "SELECT * FROM products where id_type_product = $val_id and quantity > 0 and status=0 ORDER BY price $arrange limit '$offset', '$limit'";
 
         } else {
-            $sql_display_product = "SELECT * FROM products where id_type_product = $val_id and quantity > 0 limit $offset, $limit";
+            $sql_display_product = "SELECT * FROM products where id_type_product = $val_id and quantity > 0 and status=0 limit $offset, $limit";
 
         }
         $resProduct = mysqli_query($conn, $sql_display_product);
@@ -198,8 +195,8 @@ if (isset($_GET["searchProduct"])) {
     }
     $offset = ($page - 1) * $limit;
 
-    $sqlSearch = "SELECT * FROM products where name_product like '%$search%' and quantity > 0 limit $offset, $limit";
-    $sql_count = "SELECT * FROM products where name_product like '%$search%' and quantity > 0";
+    $sqlSearch = "SELECT * FROM products where name_product like '%$search%' and quantity > 0 and status=0 limit $offset, $limit";
+    $sql_count = "SELECT * FROM products where name_product like '%$search%' and quantity > 0 and status=0";
     $resCount = mysqli_query($conn, $sql_count);
     $count = mysqli_num_rows($resCount);
 
@@ -400,7 +397,7 @@ echo '
 
 <?php
 //session_destroy();
-//$conn->close();
+
 ?>
 
         <!--FOOTER-->

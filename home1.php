@@ -17,7 +17,7 @@
         </div>
         <div class="product-hl">
 <?php
-    $sql1 = "SELECT * from products order by rand() limit 6";
+    $sql1 = "SELECT * from products where id_type_product='$row[type_id]' limit 5";
     $res1 = mysqli_query($conn, $sql1);
             while($row1 = mysqli_fetch_array($res1)) {
 

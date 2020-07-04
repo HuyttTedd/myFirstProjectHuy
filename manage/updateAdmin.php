@@ -13,10 +13,9 @@
         if(!isset($_SESSION["admin_info"]["admin_phone"])) {
             header('location:http://localhost/baitapthunhat/manage/index.php');
         }
+        include("headerAdmin.php");
 ?>
-    <div>
-        <a style="text-decoration: none; color: red" href="admin.php">Trở về trang chủ</a>
-    </div>
+
 <?php
     $flag = "";
     $phone_update = "";
@@ -60,7 +59,7 @@
     }
 
 ?>
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST" autocomplete="off">
+    <form style="text-align: center;" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST" autocomplete="off">
         <div>
             Số điện thoại ADMIN cần sửa thông tin:
         </div>

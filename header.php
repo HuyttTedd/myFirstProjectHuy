@@ -1,4 +1,5 @@
 <link href='https://fonts.googleapis.com/css?family=Cookie' rel='stylesheet'>
+<script src="https://kit.fontawesome.com/63a257a1cd.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="header.css">
     <!--Header-->
     <header>

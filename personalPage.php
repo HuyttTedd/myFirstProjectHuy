@@ -8,9 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trang cá nhân</title>
     <link rel="stylesheet" href="personalPage.css">
-    <link href="fontawesome/css/fontawesome.css" rel="stylesheet">
-    <link href="fontawesome/css/brands.css" rel="stylesheet">
-    <link href="fontawesome/css/solid.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/63a257a1cd.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <?php
@@ -93,7 +91,7 @@ $phone = $_SESSION["info_customer"]["phone_number"];
           while($row1 = mysqli_fetch_array($res_bill_solving)) {
 ?>
   <table>
-    <caption>Mã hóa đơn: <?php echo $row1["bill_id"]; ?>. Tổng tiền: <?php echo number_format($row1["total"]); ?> VNĐ</caption>
+    <caption>Mã hóa đơn: <?php echo $row1["bill_id"]; ?> <br> Tổng tiền: <?php echo number_format($row1["total"]); ?> VNĐ</caption>
 <?php
             $bill_solving_detailed = "SELECT * from billdetailed where bill_id = '$row1[bill_id]'";
             $res_bill_solving_detailed = mysqli_query($conn, $bill_solving_detailed);
@@ -101,7 +99,7 @@ $phone = $_SESSION["info_customer"]["phone_number"];
 ?>
     <tr>
       <td>Tên sản phẩm: <?php echo $row2["product_name"] ?></td>
-      <td>Đơn giá: <?php echo $row2["product_price"] ?></td>
+      <td>Đơn giá: <?php echo number_format($row2["product_price"]) ?> VNĐ</td>
       <td>Số lượng: <?php echo $row2["product_quantity"] ?></td>
     </tr>
 <?php
@@ -121,7 +119,7 @@ $phone = $_SESSION["info_customer"]["phone_number"];
           while($row1 = mysqli_fetch_array($res_bill_solving)) {
 ?>
   <table>
-    <caption>Mã hóa đơn: <?php echo $row1["bill_id"]; ?>. Tổng tiền: <?php echo number_format($row1["total"]); ?> VNĐ</caption>
+    <caption>Mã hóa đơn: <?php echo $row1["bill_id"]; ?> <br> Tổng tiền: <?php echo number_format($row1["total"]); ?> VNĐ</caption>
 <?php
             $bill_solving_detailed = "SELECT * from billdetailed where bill_id = '$row1[bill_id]'";
             $res_bill_solving_detailed = mysqli_query($conn, $bill_solving_detailed);
@@ -129,7 +127,7 @@ $phone = $_SESSION["info_customer"]["phone_number"];
 ?>
     <tr>
       <td>Tên sản phẩm: <?php echo $row2["product_name"] ?></td>
-      <td>Đơn giá: <?php echo $row2["product_price"] ?></td>
+      <td>Đơn giá: <?php echo number_format($row2["product_price"]) ?> VNĐ</td>
       <td>Số lượng: <?php echo $row2["product_quantity"] ?></td>
     </tr>
 <?php
@@ -149,7 +147,7 @@ $phone = $_SESSION["info_customer"]["phone_number"];
           while($row1 = mysqli_fetch_array($res_bill_solving)) {
 ?>
   <table>
-    <caption>Mã hóa đơn: <?php echo $row1["bill_id"]; ?>. Tổng tiền: <?php echo number_format($row1["total"]); ?> VNĐ</caption>
+    <caption>Mã hóa đơn: <?php echo $row1["bill_id"]; ?><br> Tổng tiền: <?php echo number_format($row1["total"]); ?> VNĐ</caption>
 <?php
             $bill_solving_detailed = "SELECT * from billdetailed where bill_id = '$row1[bill_id]'";
             $res_bill_solving_detailed = mysqli_query($conn, $bill_solving_detailed);
@@ -157,7 +155,7 @@ $phone = $_SESSION["info_customer"]["phone_number"];
 ?>
     <tr>
       <td>Tên sản phẩm: <?php echo $row2["product_name"] ?></td>
-      <td>Đơn giá: <?php echo $row2["product_price"] ?></td>
+      <td>Đơn giá: <?php echo number_format($row2["product_price"]) ?> VNĐ</td>
       <td>Số lượng: <?php echo $row2["product_quantity"] ?></td>
     </tr>
 <?php

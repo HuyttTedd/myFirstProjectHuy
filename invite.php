@@ -33,7 +33,7 @@
   }
 }
 #unlog-in a {
-    text-decoration: ;
+    text-decoration: none;
     color: black;
     font-size: .9rem;
 }

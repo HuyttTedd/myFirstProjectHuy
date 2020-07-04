@@ -21,13 +21,12 @@
     </style>
 </head>
 <body style="background: #b3b300">
-    <div>
-        <a style="text-decoration: none; color: #cc0000; " href="admin.php">Trở về trang chủ</a>
-    </div>
+
     <?php
         if(!isset($_SESSION["admin_info"]["admin_phone"])) {
             header('location:http://localhost/baitapthunhat/manage/index.php');
         }
+        include("headerAdmin.php");
     ?>
 <?php
 $flag = "";
@@ -101,7 +100,14 @@ $flag = "";
         <div class="item">
             Cấp độ ADMIN:
         </div>
-        <input type="radio" name="level" value="1">Super Admin
+        <?php
+            if($_SESSION["admin_info"]["admin_level"] > 1) {
+        ?>
+    <input type="radio" name="level" value="1">Super Admin
+        <?php
+            }
+        ?>
+        
         <input type="radio" name="level" value="0" checked>Admin
         <br><br>
         <input type="submit" value="Xác nhận thêm" name="submit">

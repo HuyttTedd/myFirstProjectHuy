@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Danh sách Admin</title>
     <style>
         table, th, td {
         border: 1px solid black;
@@ -25,13 +25,9 @@ th, td {
         if(!isset($_SESSION["admin_info"]["admin_phone"])) {
             header('location:http://localhost/baitapthunhat/manage/index.php');
         }
+        include("headerAdmin.php");
 ?>
-    <div>
-        <a href="addAdmin.php">Thêm ADMIN</a>
-    </div>
-    <div>
-        <a href="admin.php">Trang chủ</a>
-    </div>
+
     <table>
         <tr>
             <td>Tên admin</td>

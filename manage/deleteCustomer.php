@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Khóa tài khoản khách hàng Shop Vàng Mã</title>
 </head>
 <style>
     body {
@@ -55,6 +55,18 @@
     p {
         color: red;
     }
+
+    /* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
 </style>
 <body>
 <?php
@@ -64,6 +76,7 @@
 ?>
 
 <?php
+include("headerAdmin.php");
     $flag = "";
     if (isset($_POST["phone"])) {
         $phone = $_POST["phone"];
@@ -72,10 +85,10 @@
         $res1 = mysqli_query($conn, $sql1);
 
         if (mysqli_num_rows($res1) > 0) {
-            $sql = "DELETE from tbl_account where phone_number = '$phone'";
+            $sql = "UPDATE tbl_account set status=4 where phone_number = '$phone'";
             $res = mysqli_query($conn, $sql);
             if($res) {
-                $flag = "Xóa thành công!";
+                $flag = "Khóa tài khoản thành công!";
             } else {
                 $flag = "Có lỗi xảy ra, thử lại sau!";
             }
@@ -86,11 +99,11 @@
 ?>
 
 
-<h1>Xóa tài khoản khách hàng!</h1>
+<h1>Khóa tài khoản khách hàng!</h1>
 <div class="container">
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST" autocomplete="off">
-        <div class="item">Số điện thoại khách hàng muốn xóa: </div>
-        <input type="text" name="phone" class="item" id="phone" 
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST" autocomplete="off" onSubmit="return confirm('Bạn có chắc muốn Khóa tài khoản?') ">
+        <div class="item">Số điện thoại khách hàng muốn khóa: </div>
+        <input type="number" name="phone" class="item" id="phone" 
         value="<?php
             if(isset($_POST["phone"])) {
                 echo $_POST["phone"];
@@ -98,7 +111,7 @@
         ?>"
         >
         <div>
-            <button type="submit" class="item">Xóa</button>
+            <button type="submit" class="item">Khóa tài khoản</button>
             <p><?php echo $flag; ?></p>
         </div>
     </form>

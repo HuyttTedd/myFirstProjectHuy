@@ -44,8 +44,9 @@
 <body>
 <?php
         if(isset($_SESSION["admin_info"]["admin_phone"])) {
-            header('location:http://localhost/baitapthunhat/manage/admin.php');
+            header('location:http://localhost/baitapthunhat/manage/manageBills.php');
         }
+    
 ?>
     <?php
     //ĐĂNG NHẬP
@@ -64,7 +65,7 @@
                     $_SESSION["admin_info"]["admin_name"] = $row["admin_name"]; 
                     $_SESSION["admin_info"]["admin_level"] = $row["level"];
                     $_SESSION["admin_info"]["admin_phone"] = $row["admin_phone_number"];
-                    header('location:http://localhost/baitapthunhat/manage/admin.php');
+                    header('location:http://localhost/baitapthunhat/manage/manageBills.php');
                 } else {
                     $err = "Tài khoản hoặc mật khẩu không chính xác!";
                 }

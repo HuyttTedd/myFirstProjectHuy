@@ -13,13 +13,10 @@
         if(!isset($_SESSION["admin_info"]["admin_phone"])) {
             header('location:http://localhost/baitapthunhat/manage/index.php');
         }
+        include("headerAdmin.php");
 ?>
-    <div>
-        <a style="text-decoration: none; color: red" href="admin.php">Trở về trang chủ</a>
-    </div>
-    <div class='item'>
-    <a href="listProduct.php" style="text-decoration: none; color: red">Danh sách tất cả sản phẩm</a>
-    </div>
+
+
     <?php
     $flag = "";
     $product_id = "";
@@ -74,7 +71,7 @@
         }
     }
     ?>
-
+<div style="margin-left: 100px;">
     <h1>Sửa sản phẩm <span style="color: red"><?php echo $product_id;?></span></h1>
     <h2><?php echo $flag; ?></h2>
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
@@ -94,5 +91,6 @@
         <input type="submit" value="Xác nhận">
         
     </form>
+</div>
 </body>
 </html>

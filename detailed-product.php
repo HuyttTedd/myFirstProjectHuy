@@ -9,9 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" href="detailed-product.css">
-    <link href="fontawesome/css/fontawesome.css" rel="stylesheet">
-    <link href="fontawesome/css/brands.css" rel="stylesheet">
-    <link href="fontawesome/css/solid.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/63a257a1cd.js" crossorigin="anonymous"></script>
 
 </head>
 <body>
@@ -41,9 +39,7 @@
                 $quan = $row["quantity"];
             }
         }
-        $i = 0;
-        
-        
+        $i = 0;    
         $sql2 = "SELECT * FROM img where id_product = $id1";
         $resProduct2 = mysqli_query($conn, $sql2);
         while ($row2 = mysqli_fetch_array($resProduct2)) {
@@ -151,7 +147,7 @@
 <div class="content">
         <div class="product">           
 <?php
-        $sql3 = "SELECT * FROM products where id_type_product = $type and id_product != $id1 and quantity > 0 limit 10";
+        $sql3 = "SELECT * FROM products where id_type_product = $type and id_product != $id1 and quantity > 0 and status=0 limit 10";
         $resProduct = mysqli_query($conn, $sql3);
         while ($row2 = mysqli_fetch_array($resProduct)) {
 ?>

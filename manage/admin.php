@@ -117,14 +117,16 @@
     </div>
     -->
     <h3>Khách hàng</h3>
+    <!--
     <div class='item'>
     <a href="customer.php">Xem thông tin tất cả khách hàng</a>
     </div>
     <div class='item'>
     <a href="updateCustomer.php">Sửa thông tin khách hàng</a>
     </div>
+    -->
     <div class='item'>
-    <a href="deleteCustomer.php">Xóa tài khoản khách hàng</a>
+    <a href="deleteCustomer.php">Khóa tài khoản khách hàng</a>
     </div>
 </div>
 <hr>
@@ -141,9 +143,9 @@
     </div>';
     }
 
-    echo "<pre>";
-    print_r($_SESSION);
-echo "</pre>";
+//     echo "<pre>";
+//     print_r($_SESSION);
+// echo "</pre>";
 ?>
 
 </body>

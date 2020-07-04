@@ -53,7 +53,7 @@ session_start();
 
             
             
-            $sql = $conn->prepare("SELECT id,name,phone_number,pass FROM tbl_account WHERE phone_number =? AND pass =? limit 1");
+            $sql = $conn->prepare("SELECT id,name,phone_number,pass FROM tbl_account WHERE phone_number =? AND pass =? and status != 4 limit 1");
             $sql->bind_param('ss', $phone, $pass);
             $sql->execute();
             $res = $sql->get_result();

@@ -6,15 +6,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Sửa loại sản phẩm</title>
 </head>
 <body>
-    <div>
-        <a style="text-decoration: none; color: red" href="admin.php">Trở về trang chủ</a>
-    </div>
-    <div>
-        <a style="text-decoration: none; color: red" href="listProduct.php">Danh sách sản phẩm</a>
-    </div>
+
 <?php
         if(!isset($_SESSION["admin_info"]["admin_phone"])) {
             header('location:http://localhost/baitapthunhat/manage/index.php');
@@ -33,6 +28,7 @@
                 $flag = "Sửa thành công!";
             }
         }
+        include("headerAdmin.php");
 ?>
 
 <form action="" method="POST">

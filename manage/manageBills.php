@@ -69,6 +69,17 @@ if (isset($_POST["completeOrder"])) {
     $rowTest = mysqli_fetch_array($resTest);
     if ($rowTest["status"] == 1) {
         $sqlComplete = "UPDATE bill SET status=2 where bill_id='$completeOrder' and status = 1";
+        foreach($_SESSION["statistic2"][$completeOrder] as $key => $value) {
+            $new_quan = 0;
+            $sqlSoldOut = "SELECT sold_out from products where id_product = '$key'";
+            $res = mysqli_query($conn, $sqlSoldOut);
+            $row = mysqli_fetch_array($res);
+            $new_quan = intval($row["sold_out"]) + intval($value["buy"]);
+            $sqlSoldOut2 = "UPDATE products set sold_out='$new_quan' where id_product='$key'";
+            mysqli_query($conn, $sqlSoldOut2);
+        }
+        //$sqlSoldOut = "SELECT sold_out from products where "
+        //$sqlSoldOut = 
         mysqli_query($conn, $sqlComplete);
         mysqli_close($conn);
     } else {
@@ -113,11 +124,9 @@ if (isset($_POST["cancelOrder1"])) {
     }
 }
 
+include("headerAdmin.php");
 ?>
     <h1 class="title">Quản lý đơn hàng!</h1>
-    <div>
-        <a style="text-decoration: none; color: red" href="admin.php">Trang chủ</a>
-    </div>
     <div style="color: red;">
         <?php
 echo $err;

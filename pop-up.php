@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>POPUP</title>
     <link rel="stylesheet" href="pop-up.css">
+    <script src="https://kit.fontawesome.com/63a257a1cd.js" crossorigin="anonymous"></script>
 </head>
 
 <body>

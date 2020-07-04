@@ -9,27 +9,34 @@
     <title>Xóa loại sản phẩm</title>
 </head>
 <body>
-<div>
-        <a style="text-decoration: none; color: red" href="admin.php">Trở về trang chủ</a>
-    </div>
-    <div>
-        <a style="text-decoration: none; color: red" href="listProduct.php">Danh sách sản phẩm</a>
-    </div>
+
 <?php
         if(!isset($_SESSION["admin_info"]["admin_phone"])) {
             header('location:http://localhost/baitapthunhat/manage/index.php');
-        }
 
+        }
+include("headerAdmin.php");
         //request
         if(isset($_REQUEST["type_id"])) {
             $product_type_id = $_REQUEST["type_id"];
             include("connect2.php");
-            $sql = "DELETE from product_type where type_id = '$product_type_id'";
+            $sql = "UPDATE product_type set status = 4 where type_id = '$product_type_id'";
             $res = mysqli_query($conn, $sql);
             if($res) {
                 header('location:http://localhost/baitapthunhat/manage/listProduct.php');
             } else {
-                echo "Chú ý: Loại sản phẩm muốn xóa phải không có sản phẩm nào!";
+                echo "Có lỗi xảy ra!";
+            }
+        }
+        if(isset($_REQUEST["type_id2"])) {
+            $product_type_id = $_REQUEST["type_id2"];
+            include("connect2.php");
+            $sql = "UPDATE product_type set status = 0 where type_id = '$product_type_id'";
+            $res = mysqli_query($conn, $sql);
+            if($res) {
+                header('location:http://localhost/baitapthunhat/manage/listProduct.php');
+            } else {
+                echo "Có lỗi xảy ra!";
             }
         }
 ?>

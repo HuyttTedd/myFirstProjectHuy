@@ -7,18 +7,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <title>Document</title>
+    <title>Thêm sản phẩm</title>
+    <style>
+        input {
+            margin-bottom: 1rem;
+        }
+    </style>
 </head>
 <body>
 <?php
         if(!isset($_SESSION["admin_info"]["admin_phone"])) {
             header('location:http://localhost/baitapthunhat/manage/index.php');
         }
+        include("headerAdmin.php");
 ?>
 
-    <div>
-        <a style="text-decoration: none; color: red; font-size: 2rem; background: #ffff80" href="admin.php">Trở về trang chủ</a>
-    </div>
+
 
 <?php
 
@@ -31,7 +35,7 @@
         $price = $_POST["price"];
         $quantity = $_POST["quantity"];
         $img = $_FILES["image1"]["name"];
-        
+        // print_r($_FILES["image1"]);
         //test
         $image_info = getimagesize($_FILES["image1"]["tmp_name"]);
 
@@ -53,19 +57,59 @@
         // }
         if($name == "" || $price == "" || $quantity == "" || $type == "" || $desc == "")  {
             $flag = false;
-            echo "Có lỗi xảy ra!";
+            echo "Không phần nào được để trống!";
         }
-        if($flag == true){
-            $sql = "INSERT INTO products (name_product, price, product_image, quantity, description, id_type_product)
-VALUES ('$name', '$price', '$img', '$quantity', '$desc', '$type')";
 
-        if ($conn->query($sql) === TRUE) {
-            echo "Thêm thành công";
+        if($flag == true){
+//             $sql = "INSERT INTO products (name_product, price, product_image, quantity, description, id_type_product)
+// VALUES ('$name', '$price', '$img', '$quantity', '$desc', '$type')";
+
+//         if ($conn->query($sql) === TRUE) {
+//             echo "Thêm thành công";
     
-        } else {
-            echo "Có lỗi xảy ra, kiểm tra lại!";
-            echo $sql;
-        }
+//         } else {
+//             echo "Có lỗi xảy ra, kiểm tra lại!";
+            
+//         }
+
+    $img2 = $_FILES["image1"];
+    $filename = $img2['tmp_name'];
+  $client_id='67fd839d20ce847';		// Replace this with your client_id, if you want images to be uploaded under your imgur account
+  $handle = fopen($filename, 'r');
+  $data = fread($handle, filesize($filename));
+  $pvars = array('image' => base64_encode($data));
+  $timeout = 30;
+  $curl = curl_init();
+  curl_setopt($curl, CURLOPT_URL, 'https://api.imgur.com/3/image.json');
+  curl_setopt($curl, CURLOPT_TIMEOUT, $timeout);
+  curl_setopt($curl, CURLOPT_HTTPHEADER, array('Authorization: Client-ID ' . $client_id));
+  curl_setopt($curl, CURLOPT_POST, 1);
+  curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+  curl_setopt($curl, CURLOPT_POSTFIELDS, $pvars);
+
+  $out = curl_exec($curl);
+  curl_close ($curl);
+  $pms = json_decode($out,true);
+  $url=$pms['data']['link'];
+  if($url!=''){
+   echo "<h4 bg-success>Thêm sản phẩm thành công!</h4>";
+//    echo "<input type='text' id='image-link' value='".substr($url,8)."'/><button onclick='copyToClipboard()'>Copy link</button><br/><hr/><h5>Preview : </h5>";
+//    echo "<img id='imgur-image' alt='imgur-image' src='$url'/>";
+   $aaa = "https://".substr($url,8);
+   
+   $bbb = "";
+   $sql =   "INSERT INTO products (name_product, price, product_image, quantity, description, id_type_product)
+   VALUES ('$name', '$price', '$aaa', '$quantity', '$desc', '$type')";
+    if(mysqli_query($conn, $sql)) {
+        $bbb = "Thêm thành công";
+    }
+  }
+  else{
+   echo "<h4 class='bg-danger'>There’s a Problem</h4>";
+   echo "<div>".$pms['data']['error']."</div>";  
+  } 
+ }
+
     }
 
 
@@ -78,18 +122,19 @@ VALUES ('$name', '$price', '$img', '$quantity', '$desc', '$type')";
 // } else {
 //     echo "Error: " . $sql . "<br>" . $conn->error;
 // }
-    }
+    
 ?>
+<div style="text-align: center;">
     <h1>Thêm sản phẩm</h1>
-<form method="POST" enctype="multipart/form-data">
+<form method="POST" enctype="multipart/form-data" action="addProduct.php">
         Tên sản phẩm muốn thêm: <br>
-        <input type="text" name="name"> <br>
+        <input type="text" name="name" value="<?php if(isset($_POST["name"])) echo $_POST["name"]; ?>"> <br>
         Giá sản phẩm: <br>
-        <input type="number" name="price"> <br>
+        <input type="number" name="price" value="<?php if(isset($_POST["name"])) echo $_POST["price"]; ?>"> <br>
         Ảnh sản phẩm: <br>
         <input type="file" name="image1" id="image"> <br>
         Số lượng có: <br>
-        <input type="text" name="quantity"> <br>
+        <input type="text" name="quantity" value="<?php if(isset($_POST["name"])) echo $_POST["quantity"]; ?>"> <br>
         Mã loại sản phẩm: <br>
         <?php
             include("connect2.php");
@@ -97,13 +142,13 @@ VALUES ('$name', '$price', '$img', '$quantity', '$desc', '$type')";
             $ress = mysqli_query($conn, $sql69);
 
 ?>
-<select name="type" id="">
+<select name="type" id="" style="margin-bottom: 1rem;">
 
 
 <?php
     while ($roww = mysqli_fetch_array($ress)) {
         ?>
-    <option value="<?php echo $roww["type_name"] ?>"><?php echo $roww["type_name"] ?></option>
+    <option value="<?php echo $roww["type_id"] ?>"><?php echo $roww["type_name"] ?></option>
 <?php
     }
 ?>
@@ -112,17 +157,18 @@ VALUES ('$name', '$price', '$img', '$quantity', '$desc', '$type')";
 </select>
         Mô tả: <br>
         <textarea name="description" id="" cols="30" rows="10"></textarea> <br>
-        <input type="submit" value="submit" id="insert" name="insert">
+        <input type="submit" value="Xác nhận" id="insert" name="insert">
+
     </form>
-
-
+<p style="color: red;"> <?php echo $bbb; ?></p>
+    </div>
     <script>
         $(document).ready(function(){  
       $('#insert').click(function(){  
            var image_name = $('#image').val();  
            if(image_name == '')  
            {  
-                alert("Please Select Image");  
+                alert("Bạn chưa chọn ảnh!");  
                 return false;  
            }  
            else  
@@ -130,7 +176,7 @@ VALUES ('$name', '$price', '$img', '$quantity', '$desc', '$type')";
                 var extension = $('#image').val().split('.').pop().toLowerCase();  
                 if(jQuery.inArray(extension, ['gif','png','jpg','jpeg']) == -1)  
                 {  
-                     alert('Invalid Image File');  
+                     alert('File ảnh không hợp lệ!');  
                      $('#image').val('');  
                      return false;  
                 }  
