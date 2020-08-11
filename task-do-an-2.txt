@@ -1,0 +1,31 @@
+							Giáo vụ:
+
+-1 giáo vụ level cao nhất
+-các giáo vụ con
+-giáo vụ thêm, sửa, xóa cho giảng viên
+-giáo vụ thêm, sửa, xóa sinh viên bằng excel---> lưu vào db
+-giáo vụ xếp lớp cho sinh viên qua danh sách sinh viên
+-giáo vụ phân công lớp dạy cho giảng viên
+-xem tình trạng đi dạy của giảng viên---> xuất ra file excel
+-điểm danh cho sinh viên
+-khi môn học đã học xong---> gửi thông báo cho giáo vụ ---> xếp lịch thi cho lớp đó// xếp lịch thi lại // quản lý danh sách học lại
+-giáo vụ nhập điểm thi sinh viên bằng excel---> lưu vào db
+
+							Giảng viên:
+-Đăng nhập bằng tài khoản giáo vụ
+-Chọn lớp học, môn học đã được giáo vụ phân công --> chọn thời gian dạy----> điểm danh sinh viên
+-Tính số buổi môn học còn lại
+-Gửi email báo thi cho giáo vụ khi môn học đã học xong
+-Xem lịch dạy của mình
+
+							Sinh viên:
+
+
+-Đăng nhập bằng mã sinh viên
+-Xem thông tin của bản thân
+-Xem danh sách tất cả các môn của ngành học
+-Xem điểm các môn đã học
+
+
+
+
