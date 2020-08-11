@@ -46,7 +46,7 @@ if(!isset($_SESSION['info_customer']["phone_number"])) {
 -->
             <?php
             include "connect.php";
-                $hl_img = "SELECT * from image_hightlight where position > 0 order by position ASC limit 20";
+                $hl_img = "SELECT * from image_hightlight where position > 0 and position < 21 order by position ASC";
                 
                 if($res = mysqli_query($conn, $hl_img)) {
                     while($row = mysqli_fetch_array($res)) {
@@ -104,7 +104,7 @@ if (isset($_REQUEST["val"]) && isset($_REQUEST["page"])) {
 
 ?>
             </div>
-            <div class="arrange">
+            <div class="arrange" style="display: none;">
                 <span>Sắp xếp <i class="fas fa-chevron-down"></i></span>
                 <div class="dropdown">
 

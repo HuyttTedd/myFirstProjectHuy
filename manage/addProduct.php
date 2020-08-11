@@ -105,8 +105,8 @@
     }
   }
   else{
-   echo "<h4 class='bg-danger'>There’s a Problem</h4>";
-   echo "<div>".$pms['data']['error']."</div>";  
+   echo "<h4 class='bg-danger'>Có lỗi xảy ra!</h4>";
+     
   } 
  }
 
